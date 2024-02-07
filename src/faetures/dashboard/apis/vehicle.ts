@@ -6,6 +6,6 @@ const api = API.getInstance()
 
 export async function getGetVehicles() {
     return api.GetMethod<VehicleDto[]>({
-        url: "http://localhost:3000/api/vehicle-status"
+        url: "https://nextjs-project-ev-battry-rfaez4fxe-omidima.vercel.app/api/vehicle-status"
     })
 }

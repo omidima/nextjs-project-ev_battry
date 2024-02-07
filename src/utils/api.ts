@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosPromise } from 'axios';
-import { API_URL } from './app_constant';
 import { getCookie } from './cookie_helper';
 import { ACCESS_TOKEN } from './storage_key';
+import { API_URL } from './app_constant';
 
 
 interface IApiMethodProps {
