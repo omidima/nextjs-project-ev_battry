@@ -68,8 +68,8 @@ export default class API {
     public async setAuthToken() {
         let _user_token;
         if (typeof window === "undefined") {
-            const module = await import('next/headers')
-            _user_token = module.cookies().get(ACCESS_TOKEN)?.value;
+            // const module = await import('next/headers')
+            // _user_token = module.cookies().get(ACCESS_TOKEN)?.value;
         } else {
             _user_token = getCookie(ACCESS_TOKEN);
         }
