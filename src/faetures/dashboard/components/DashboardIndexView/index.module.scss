@@ -1,0 +1,59 @@
+.card {
+    p {
+        line-height: 21px;
+    }
+    top: 35px;
+    left: 177px;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+}
+
+.simple {
+    h3 {
+        color: var(--primary-color);
+    }
+
+    background-color: white;
+}
+
+.blue {
+    h3 {
+        color: white;
+    }
+
+    color: white;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+.dark {
+    h3 {
+        color: white;
+    }
+
+    gap: 24px;
+    color: white;
+    background-color: rgba(33, 33, 33, 1);
+}
+
+.green {
+    h3 {
+        color: black;
+    }
+
+    color: black;
+    gap: 24px;
+    background-color: rgba(172, 245, 176, 1);
+}
+
+.empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

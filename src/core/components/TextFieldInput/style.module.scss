@@ -1,0 +1,44 @@
+.label {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16.41px;
+    color: black;
+    padding-bottom: 10px;
+}
+
+.input {
+
+    &:focus {
+        outline: 1px solid grey;
+    }
+    border: none;
+    width: 100%;
+    background-color: #F5F8FA;
+    color: black;
+    padding: 16px ;
+    border-radius: 6px;
+}
+
+.error {
+    color: red;
+    outline: red;
+}
+
+.success {
+    color: red;
+    outline: red;
+}
+
+.lead {
+    a{
+        text-decoration: none !important;
+        color: var(--primary-color) !important;
+    }
+    
+    text-align: end;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16.41px;
+    color: var(--primary-color) !important;
+}
+

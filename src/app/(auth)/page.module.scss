@@ -1,0 +1,53 @@
+.form_body {
+    .footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+        width: 100%;
+    }
+
+    position: relative;
+    padding: 117px 0 50px 0;
+    height: 100vh;
+}
+
+.sidebar {
+    @media (max-width:600px) {
+        & {
+            display: none;
+        }
+    }
+
+    .content {
+        p {
+            font-size: 16px;
+            line-height: 24.38px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        img {
+            width: auto !important;
+            margin-bottom: 24px;
+        }
+
+        text-align: start;
+        position: absolute;
+        bottom: 50px;
+        padding: 0 50px;
+    }
+
+    .cover {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        position: relative;
+        z-index: -1;
+    }
+    color: white;
+    position: relative;
+    background-image: linear-gradient(0deg, var(--primary-color), #1940CB, rgba(0, 0, 0, 0));
+}

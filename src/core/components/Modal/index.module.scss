@@ -1,0 +1,49 @@
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0000001c;
+    z-index: 9999;
+}
+
+.bg_1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0000001c;
+    z-index: 10001;
+}
+
+.container {
+    padding: 48px;
+    border-radius: 16px;
+    gap: 10px;
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    max-width: 500px;
+    z-index: 10000;
+    overflow: auto;
+}
+
+.container_full {
+    background-color: #fff;
+    padding: 48px;
+    border-radius: 16px;
+    padding: 22px;
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    z-index: 10002;
+    overflow: auto;
+}

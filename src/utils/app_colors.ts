@@ -1,0 +1,6 @@
+export const primaryColor = "#2A5A50"
+export const secondryColor = "#EFB73F"
+export const backgroundColor = "#FAF5E6"
+export const errorColor = "#ED6D68"
+export const whiteColor = "#fff"
+export const blackColor = "#000"

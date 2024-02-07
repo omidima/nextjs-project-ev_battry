@@ -1,0 +1,39 @@
+.item {
+    padding: 16px;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    height: fit-content;
+    color: white !important;
+    font-size: 14px;
+    font-family: Roboto;
+    
+    svg {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+}
+
+.active {
+    background-color: var(--primary-color);
+}
+
+.deactive {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.new {
+    svg {
+        font-size: 32px;
+    }
+    
+    height: fit-content;
+    width: 100%;
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: white !important;
+    border: 2px solid white;
+    border-style: dashed;
+}
