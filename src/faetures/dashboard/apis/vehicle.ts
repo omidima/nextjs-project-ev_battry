@@ -1,11 +1,12 @@
 import API from "@/utils/api";
 import { VehicleDto } from "../types/vehicle.dto";
+import { API_URL } from "@/utils/app_constant";
 
 
 const api = API.getInstance()
 
 export async function getGetVehicles() {
     return api.GetMethod<VehicleDto[]>({
-        url: "https://nextjs-project-ev-battry.vercel.app/api/vehicle-status"
+        url: `${API_URL}/api/vehicle-status`
     })
 }

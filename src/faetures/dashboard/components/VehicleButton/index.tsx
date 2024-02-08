@@ -1,3 +1,5 @@
+"use client"
+
 import { ReactNode } from "react";
 import s from "./index.module.scss";
 import { VehicleDto } from "../../types/vehicle.dto";
@@ -23,12 +25,16 @@ export default function VehicleButton(props: Props) {
         }
     }
 
+    function renderText() {
+        return props.type === "default" ? props.item.name : `${props.item.brand} ${props.item.name} ${props.item.model}`
+    }
+
     return <div className={`${props.type === "item" ? s.item : s.new} ${props.isActive ? s.active : s.deactive}`} onClick={() => props.onSelect ? props.onSelect(props.item) : null}>
         <div>
             {returnLogo()}
         </div>
         <div>
-            {props.type === "default" ? props.item.name : `${props.item.brand} ${props.item.name} ${props.item.model}`}
+            {window.innerWidth < 612 ? null : renderText()}
         </div>
     </div>
 }
