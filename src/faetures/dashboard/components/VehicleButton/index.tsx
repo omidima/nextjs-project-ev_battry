@@ -29,12 +29,20 @@ export default function VehicleButton(props: Props) {
         return props.type === "default" ? props.item.name : `${props.item.brand} ${props.item.name} ${props.item.model}`
     }
 
+    function handleType() {
+        if ((typeof window !== "undefined")){
+            return window.innerWidth < 612 ? null : renderText()
+        } 
+
+        return renderText()
+    }
+
     return <div className={`${props.type === "item" ? s.item : s.new} ${props.isActive ? s.active : s.deactive}`} onClick={() => props.onSelect ? props.onSelect(props.item) : null}>
         <div>
             {returnLogo()}
         </div>
         <div>
-            {window.innerWidth < 612 ? null : renderText()}
+            {handleType()}
         </div>
     </div>
 }
