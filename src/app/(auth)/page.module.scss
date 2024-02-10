@@ -10,6 +10,13 @@
     position: relative;
     padding: 117px 0 50px 0;
     height: 100vh;
+
+    @media (max-width: 920px) {
+        & {
+            padding-top: 75px;
+            height: 90vh;
+        }
+    }
 }
 
 .sidebar {
