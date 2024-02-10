@@ -7,4 +7,5 @@ export interface Authdto {
     username: string
     full_name: string
     url: string
+    sessionToken: string
 }

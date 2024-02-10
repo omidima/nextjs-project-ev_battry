@@ -25,8 +25,10 @@ export default function LoginForm() {
             )
 
             setCookie(USER_DATA, JSON.stringify(response))
-            setCookie(ACCESS_TOKEN, "sample token")
-            location.replace("/dashboard")
+            setCookie(ACCESS_TOKEN, response.sessionToken)
+            setTimeout(() => {
+                location.replace("/dashboard")
+            }, 1000)
         }} />
     </form>
 }

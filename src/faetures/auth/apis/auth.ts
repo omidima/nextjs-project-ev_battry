@@ -1,15 +1,19 @@
-import API from "@/utils/api";
 import { Authdto } from "../types/auth.dto";
-
-
-const api = API.getInstance()
+import parseSdk from "@/core/network/parse";
+import { getCookie } from "@/utils/cookie_helper";
+import { ACCESS_TOKEN } from "@/utils/storage_key";
 
 export async function postLogin(username: string, password: string): Promise<Authdto> {
-    await new Promise(r => setTimeout(r, 2000));
+    const response = await parseSdk.User.logIn(username, password)
 
     return {
-        full_name: "omid hadidy",
-        url: "sample url",
-        username: "omid_hadidy"
+        full_name: response.get("full_name"),
+        url: response.getEmail() ?? "",
+        username: response.getUsername()!,
+        sessionToken: response.getSessionToken()!
     }
+}
+
+export async function getCurrentUser() {
+    return parseSdk.User.become(getCookie(ACCESS_TOKEN)!)
 }
