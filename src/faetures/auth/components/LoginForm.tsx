@@ -6,29 +6,55 @@ import Link from "next/link"
 import { postLogin } from "../apis/auth"
 import { setCookie } from "@/utils/cookie_helper"
 import { ACCESS_TOKEN, USER_DATA } from "@/utils/storage_key"
+import { useState } from "react"
+import { Snackbar } from "@mui/material"
 
 export default function LoginForm() {
+    const [open, setOpen] = useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
     return <form onSubmit={(e) => {
         e.preventDefault()
     }}>
+        <Snackbar
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            message="Login in failed! please try again"
+        />
         <h1 className="mb-6">Sign In to Generational</h1>
         <div className="mb-4">
-            <TextFieldInput label="Email" type="email" name="email" required/>
+            <TextFieldInput label="Email" type="email" name="email" required />
         </div>
         <div className="mb-4">
             <TextFieldInput label="Passsword" type="password" lead={<Link href={"/forget-password"}>Forget Password?</Link>} name="password" required />
         </div>
         <Button text="Sign In" type="primary" onClick={async () => {
-            const response = await postLogin(
-                document.querySelector<HTMLInputElement>("input[name='email']")?.value!,
-                document.querySelector<HTMLInputElement>("input[name='password']")?.value!,
-            )
+            try {
+                const response = await postLogin(
+                    document.querySelector<HTMLInputElement>("input[name='email']")?.value!,
+                    document.querySelector<HTMLInputElement>("input[name='password']")?.value!,
+                )
 
-            setCookie(USER_DATA, JSON.stringify(response))
-            setCookie(ACCESS_TOKEN, response.sessionToken)
-            setTimeout(() => {
-                location.replace("/dashboard")
-            }, 1000)
+                setCookie(USER_DATA, JSON.stringify(response))
+                setCookie(ACCESS_TOKEN, response.sessionToken)
+                setTimeout(() => {
+                    location.replace("/dashboard")
+                }, 1000)
+            } catch {
+                setOpen(true)
+            }
         }} />
     </form>
 }
