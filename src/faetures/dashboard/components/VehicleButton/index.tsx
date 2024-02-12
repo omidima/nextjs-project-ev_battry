@@ -26,13 +26,13 @@ export default function VehicleButton(props: Props) {
     }
 
     function renderText() {
-        return props.type === "default" ? props.item.name : `${props.item.brand} ${props.item.name} ${props.item.model}`
+        return <span>{props.type === "default" ? props.item.name : `${props.item.brand} ${props.item.name} ${props.item.model}`}</span>
     }
 
     function handleType() {
-        if ((typeof window !== "undefined")){
+        if ((typeof window !== "undefined")) {
             return window.innerWidth < 612 ? null : renderText()
-        } 
+        }
 
         return renderText()
     }

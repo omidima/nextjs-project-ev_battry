@@ -26,7 +26,7 @@ export default function DashboardStatusCard() {
     const vehicle = useContext(SidebarContext)
 
     return <>
-        {vehicle.active ? <Grid container spacing={2} rowSpacing={2}>
+        {vehicle.active ? <Grid container spacing={2} rowSpacing={2} padding={2}>
             <Grid item xl={6} lg={6} md={6} sm={12} xs={12} >
                 <div className={`${s.card} ${s.simple}`}>
                     <h3>Nominal Battery Capacity</h3>
@@ -58,7 +58,7 @@ export default function DashboardStatusCard() {
                     <BorderLinearProgress aria="dark" variant="determinate" value={(vehicle.active?.remaining_warrant_month ?? 0) * 100 / 8} />
                 </div>
             </Grid>
-            <Grid item xl={6} lg={6} md={6} sm={12} xs={12} >
+            <Grid item xl={6} lg={6} md={6} sm={12} xs={12} paddingBottom={10}>
                 <div className={`${s.card} ${s.green}`}>
                     <h3>Remaining Warranty (Miles)</h3>
                     <Flex align={"end"} gap={"4"}>

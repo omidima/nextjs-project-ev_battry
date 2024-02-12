@@ -12,7 +12,7 @@ import logo from "./../../../../../public/min-logo.svg"
 export default function DashboardTemplate(props: { items: VehicleDto[], children: ReactNode }) {
     const hook = useSidebarContext()
     return <SidebarContextProvider hook={hook}>
-        <Grid xl={1} lg={1} md={2} sm={3} xs={2} className={s.sidebar}>
+        <Grid item xl={1} lg={1} md={2} sm={3} xs={2} className={s.sidebar}>
             <div className={s.logo}>
                 <Image src={logo} alt="" />
             </div>
@@ -22,6 +22,6 @@ export default function DashboardTemplate(props: { items: VehicleDto[], children
                 }} />
             </div>
         </Grid>
-        <Grid xl={11} lg={11} md={10} sm={9} xs={10} className={s.bg}>{props.children}</Grid>
+        <Grid item xl={11} lg={11} md={10} sm={9} xs={10} className={s.bg}>{props.children}</Grid>
     </SidebarContextProvider>
 }

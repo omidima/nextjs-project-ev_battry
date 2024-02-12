@@ -1,11 +1,15 @@
-import { Box, Container, Grid } from "@mui/material";
-import s from "./dashboard.module.scss";
+"use cilent"
+
 import DashboardStatusCard from "@/faetures/dashboard/components/DashboardIndexView";
 
 export default function Page() {
-    return <>
-        <Box width={"100%"}>
+    return <div style={{
+        position:"absolute",
+        top:0,
+        left:0,
+        bottom:0,
+        right:0,
+    }}>
             <DashboardStatusCard />
-        </Box>
-    </>
+    </div>
 }
