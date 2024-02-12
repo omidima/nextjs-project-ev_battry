@@ -1,0 +1,4 @@
+service_name: front_batter
+service_desc: front of ev-batter
+workdir: /home/devops/nextjs-project-ev_battry/
+command: sudo npm run start
