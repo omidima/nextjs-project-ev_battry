@@ -1,5 +1,3 @@
-"use client"
-
 import { Box, CircularProgress, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getGetVehicles } from "@/faetures/dashboard/apis/vehicle";
@@ -14,39 +12,41 @@ async function getData() {
 }
 
 
-export default function Template({ children }: { children: React.ReactNode }) {
+export default async function Template({ children }: { children: React.ReactNode }) {
 
     // @TODO: convert to ssr in production version
-    const [data, setData] = useState<null | VehicleDto[]>(null)
+    // const [data, setData] = useState<null | VehicleDto[]>(null)
+    const data = await getData()
 
     // @TODO: remove in production version
-    const [loading, setLoading] = useState<boolean>(true)
+    // const [loading, setLoading] = useState<boolean>(true)
 
-    useEffect(() => {
-        // @TODO: remove in production build
-        setLoading(true)
-        getCurrentUser().then((r) => {
-            if (r.getUsername()) {
-                getData().then(r => setData(r))
-            } else {
-                location.replace("/signup")
-            }
+    // useEffect(() => {
+    //     // @TODO: remove in production build
+    //     setLoading(true)
+    //     getCurrentUser().then((r) => {
+    //         if (r.getUsername()) {
+    //             getData().then(r => setData(r))
+    //         } else {
+    //             location.replace("/signup")
+    //         }
 
-            setLoading(false)
-        })
+    //         setLoading(false)
+    //     })
 
-    }, [])
+    // }, [])
 
     return <>
         <Box>
             <Grid container>
                 <DashboardTemplate items={data ?? []}>
-                    {loading ? <div style={{
+                    {/* {loading ? <div style={{
                         position: "absolute",
                         top: "50%",
                         left: "50%",
-                        transform:"translate(-50%,-50%)"
-                    }}><CircularProgress/></div> : children}
+                        transform: "translate(-50%,-50%)"
+                    }}><CircularProgress /></div> : children} */}
+                    {children}
                 </DashboardTemplate>
             </Grid>
         </Box>

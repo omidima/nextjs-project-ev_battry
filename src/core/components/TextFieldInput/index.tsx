@@ -14,10 +14,11 @@ interface Props {
     defaultValue?: string
     value?: string,
     type?: string,
-    error?: string
+    error?: string,
+    required?: boolean
 }
 
-export default function TextFieldInput( props: Props ) {
+export default function TextFieldInput(props: Props) {
     const [focus, setFocus] = useState(false)
 
     return <>
@@ -27,7 +28,12 @@ export default function TextFieldInput( props: Props ) {
         </Flex>
         <input onFocus={(e) => {
             setFocus(!focus)
-        }} className={`${s.input} ${focus ? props.error ? s.error : s.success : null}`} onChange={props.onChange} type={props.type} defaultValue={props.defaultValue} name={props.name} id={props.id} />
+        }} className={`${s.input} ${focus ? props.error ? s.error : s.success : null}`}
+            onChange={props.onChange}
+            type={props.type}
+            defaultValue={props.defaultValue}
+            required={props.required ?? false}
+            name={props.name} id={props.id} />
         <div className={props.error ? s.error : ""} >{props.helper}</div>
     </>
 }

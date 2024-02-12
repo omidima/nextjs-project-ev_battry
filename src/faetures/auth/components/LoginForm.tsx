@@ -13,10 +13,10 @@ export default function LoginForm() {
     }}>
         <h1 className="mb-6">Sign In to Generational</h1>
         <div className="mb-4">
-            <TextFieldInput label="Email" type="email" name="email" />
+            <TextFieldInput label="Email" type="email" name="email" required/>
         </div>
         <div className="mb-4">
-            <TextFieldInput label="Passsword" type="password" lead={<Link href={"/forget-password"}>Forget Password?</Link>} name="password" />
+            <TextFieldInput label="Passsword" type="password" lead={<Link href={"/forget-password"}>Forget Password?</Link>} name="password" required />
         </div>
         <Button text="Sign In" type="primary" onClick={async () => {
             const response = await postLogin(
