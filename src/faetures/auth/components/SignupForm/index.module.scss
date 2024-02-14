@@ -1,0 +1,35 @@
+.init {
+    height: 5px;
+    width: 100%;
+    background: rgba(228, 230, 239, 1);
+    border-radius: 8px;
+}
+
+.active {
+    background: rgba(80, 205, 137, 1);
+}
+
+.error {
+    background: red;
+}
+
+.login_button {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+
+    a {
+        span {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+    }
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    background-color: rgba(243, 246, 249, 1);
+    border-radius: 6px;
+    border: none;
+}

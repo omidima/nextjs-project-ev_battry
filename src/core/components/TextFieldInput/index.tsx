@@ -2,13 +2,13 @@
 
 import { Flex } from "@radix-ui/themes"
 import s from "./style.module.scss"
-import { ReactNode, useState } from "react"
+import { ChangeEvent, ReactNode, useState } from "react"
 
 interface Props {
     label: string
     lead?: ReactNode
     helper?: string
-    onChange?: (e: any) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void
     id?: string
     name?: string
     defaultValue?: string
@@ -34,6 +34,6 @@ export default function TextFieldInput(props: Props) {
             defaultValue={props.defaultValue}
             required={props.required ?? false}
             name={props.name} id={props.id} />
-        <div className={props.error ? s.error : ""} >{props.helper}</div>
+        <div className={props.error ? s.error : ""} style={{marginTop:10}}>{props.error}</div>
     </>
 }

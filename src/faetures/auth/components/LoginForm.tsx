@@ -12,10 +12,6 @@ import { Snackbar } from "@mui/material"
 export default function LoginForm() {
     const [open, setOpen] = useState(false);
 
-    const handleClick = () => {
-        setOpen(true);
-    };
-
     const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
             return;
@@ -27,6 +23,20 @@ export default function LoginForm() {
     return <form onSubmit={(e) => {
         e.preventDefault()
     }}>
+        <style jsx>{`
+        .login_button {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+        
+            a {
+                span {
+                    color: var(--primary-color);
+                    font-weight: bold;
+                }
+            }
+        }
+        `}</style>
         <Snackbar
             open={open}
             autoHideDuration={6000}
@@ -56,5 +66,9 @@ export default function LoginForm() {
                 setOpen(true)
             }
         }} />
+        <div className={`login_button text-center mt-6`}>
+            <span>New Here? </span>
+            <Link href={"/signup"}><span>Create an Account</span></Link>
+        </div>
     </form>
 }
