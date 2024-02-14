@@ -1,0 +1,28 @@
+name: Ev Battry app Deployment
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+        
+    steps:
+
+      - name: deployed app on server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.host }}
+          username: ${{ secrets.username }}
+          password: ${{ secrets.password }}
+          port: ${{ secrets.port }}
+          script: |
+            cd /home/devops/nextjs-project-ev_battry
+            git checkout -f origin/main
+            git pull origin main
+
+            npm i
+            npm run build
+            sudo omidocker build
+            
