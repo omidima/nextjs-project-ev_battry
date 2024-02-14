@@ -5,11 +5,32 @@ on:
     branches: [ "main" ]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      # checkout the repository content to github runner
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # setup nodejs environment
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      # setup nodejs environment
+      - name: Install dependencies
+        run: npm i
+      - name: Test app can build or not
+        run: npm run build
+
   build:
     runs-on: ubuntu-latest
-        
+    needs: test
     steps:
-
       - name: deployed app on server
         uses: appleboy/ssh-action@master
         with:
@@ -23,6 +44,6 @@ jobs:
             git pull origin main
 
             npm i
-            npm run build
+            sudo npm run build
             sudo omidocker build
             
