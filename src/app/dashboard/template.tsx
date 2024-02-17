@@ -28,6 +28,12 @@ export default function Template({ children }: { children: React.ReactNode }) {
         getCurrentUser().then((r) => {
             if (r.getUsername()) {
                 getData().then(r => setData(r))
+
+                document.addEventListener("visibilitychange", function () {
+                    if (!document.hidden) {
+                        getData().then(r => setData(r))
+                    }
+                });
             } else {
                 location.replace("/signup")
             }
@@ -45,8 +51,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
                         position: "absolute",
                         top: "50%",
                         left: "50%",
-                        transform:"translate(-50%,-50%)"
-                    }}><CircularProgress/></div> : children}
+                        transform: "translate(-50%,-50%)"
+                    }}><CircularProgress /></div> : children}
                 </DashboardTemplate>
             </Grid>
         </Box>

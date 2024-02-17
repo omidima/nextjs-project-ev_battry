@@ -29,7 +29,11 @@ export async function postSingup(data: {
     password: string,
     isCompany: boolean
 }) {
-    return await parseSdk.User.signUp(data.username,data.password, {})
+    return await parseSdk.User.signUp(data.username,data.password, {
+        lastname: data.lastname,
+        firstname: data.firstname,
+        email: data.username
+    })
 }
 
 export async function getCurrentUser() {

@@ -8,6 +8,8 @@ import VehicleItems from "./VehicleItems"
 import s from "./index.module.scss"
 import { ReactNode } from "react"
 import logo from "./../../../../../public/min-logo.svg"
+import { getCurrentUser } from "@/faetures/auth/apis/auth"
+import { connectNewVehicle } from "../../apis/vehicle"
 
 export default function DashboardTemplate(props: { items: VehicleDto[], children: ReactNode }) {
     const hook = useSidebarContext()
@@ -17,9 +19,14 @@ export default function DashboardTemplate(props: { items: VehicleDto[], children
                 <Image src={logo} alt="" />
             </div>
             <div className={s.contents}>
-                <VehicleItems items={props.items} onChange={function (item: VehicleDto): void {
-                    hook.changeActive(item)
-                }} />
+                <VehicleItems
+                    onAddItemClick={async () => {
+                        const user = await getCurrentUser()
+                        connectNewVehicle(user.attributes.connect_ui_url)
+                    }}
+                    items={props.items} onChange={function (item: VehicleDto): void {
+                        hook.changeActive(item)
+                    }} />
             </div>
         </Grid>
         <Grid item xl={11} lg={11} md={10} sm={9} xs={10} className={s.bg}>{props.children}</Grid>
