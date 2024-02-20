@@ -10,7 +10,7 @@ import { getCurrentUser } from "@/faetures/auth/apis/auth";
 
 async function getData() {
     const response = await getGetVehicles()
-    return response.data
+    return response
 }
 
 
@@ -27,7 +27,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         setLoading(true)
         getCurrentUser().then((r) => {
             if (r.getUsername()) {
-                getData().then(r => setData(r))
+                getData().then(r => {setData(r); setLoading(false);})
 
                 document.addEventListener("visibilitychange", function () {
                     if (!document.hidden) {
@@ -36,9 +36,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
                 });
             } else {
                 location.replace("/signup")
+                setLoading(false)
             }
 
-            setLoading(false)
+            
         })
 
     }, [])
@@ -52,7 +53,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
                         top: "50%",
                         left: "50%",
                         transform: "translate(-50%,-50%)"
-                    }}><CircularProgress /></div> : children}
+                    }}><CircularProgress /></div> : <>{children}</>}
                 </DashboardTemplate>
             </Grid>
         </Box>

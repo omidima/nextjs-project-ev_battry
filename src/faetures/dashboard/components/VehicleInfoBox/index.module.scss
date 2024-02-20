@@ -1,0 +1,45 @@
+.container {
+    background-color: white;
+    height: 100vh;
+    padding: 10px;
+    width: 100%;
+
+    hr {
+        color: rgba(169, 167, 188, 1);
+        border-color: solid rgba(169, 167, 188, 1);
+    }
+}
+
+.button {
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: rgba(169, 167, 188, 1);
+}
+
+.h_line {
+    background-color: rgba(169, 167, 188, 1);
+    width: 1px;
+    height: 20px;
+    margin: 0 15px;
+}
+
+.title_box {
+    p {
+        font-weight: bold;
+    }
+    padding: 32px 30px;
+    padding-top: 60px;
+    font-size: 16px;
+}
+
+.car_image {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 16px;
+    border: 1px solid rgba(238, 238, 238, 1);
+}

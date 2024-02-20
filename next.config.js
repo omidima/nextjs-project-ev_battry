@@ -3,6 +3,9 @@
  */
 const nextConfig = {
     // output: 'export',
+    images: {
+      domains: ["ev-database.org"]
+    }
    
     // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
     // trailingSlash: true,

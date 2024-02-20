@@ -93,7 +93,6 @@ export default function Form(props: { onSubmit: () => void }) {
 
                 if (validateForm()) {
                     const result = await isAvailable(document.querySelector<HTMLInputElement>("input[name='email']")?.value!)
-                    console.log(result)
                     if (result) {
                         const email = document.querySelector<HTMLInputElement>("input[name='email']")?.value;
                         const first_name = document.querySelector<HTMLInputElement>("input[name='first_name']")?.value;

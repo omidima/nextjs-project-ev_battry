@@ -24,7 +24,8 @@ export default function DashboardTemplate(props: { items: VehicleDto[], children
                         const user = await getCurrentUser()
                         connectNewVehicle(user.attributes.connect_ui_url)
                     }}
-                    items={props.items} onChange={function (item: VehicleDto): void {
+                    items={props.items.map((item, index) => { return { ...item, id: index } })}
+                    onChange={function (item: VehicleDto): void {
                         hook.changeActive(item)
                     }} />
             </div>

@@ -15,18 +15,20 @@ interface Props {
 
 export default function VehicleButton(props: Props) {
     function returnLogo() {
-        switch (props.item.brand) {
+        switch (props.item.make) {
             case "tesla":
                 return <SiTesla />
             case "Mercedes-Benz":
                 return <SiMercedes />
             case "add":
                 return <BiPlus />
+            case "simulator":
+                return <SiTesla />
         }
     }
 
     function renderText() {
-        return <span>{props.type === "default" ? props.item.name : `${props.item.brand} ${props.item.name} ${props.item.model}`}</span>
+        return <span>{props.type === "default" ? props.item.model : `${props.item.make} ${props.item.model} ${props.item.year}`}</span>
     }
 
     function handleType() {

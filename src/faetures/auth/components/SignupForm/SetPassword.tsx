@@ -31,7 +31,6 @@ export default function SetPassword(props: { onBack: () => void }) {
 
         // Add points for length
         if (password.length >= 8) {
-            console.log("len")
             checker.length = true
             setScore(checker)
         } else {
@@ -41,7 +40,6 @@ export default function SetPassword(props: { onBack: () => void }) {
 
         // Add points for capital letters
         if (/[A-Z]/.test(password)) {
-            console.log("len")
             checker.case = true
             setScore(checker)
         } else {
@@ -51,7 +49,6 @@ export default function SetPassword(props: { onBack: () => void }) {
 
         // Add points for numbers
         if (/[0-9]/.test(password)) {
-            console.log("len")
             checker.number = true
             setScore(checker)
         } else {
@@ -61,7 +58,6 @@ export default function SetPassword(props: { onBack: () => void }) {
 
         // Add points for special characters
         if (/[^A-Za-z0-9]/.test(password)) {
-            console.log("len")
             checker.char = true
             setScore(checker)
         } else {
