@@ -35,11 +35,11 @@ export default function Template({ children }: { children: React.ReactNode }) {
                     }
                 });
             } else {
-                location.replace("/signup")
+                location.replace("/signin")
                 setLoading(false)
             }
-
-            
+        }).catch(e => {
+            location.replace("/signin")
         })
 
     }, [])

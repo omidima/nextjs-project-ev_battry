@@ -10,6 +10,9 @@ import { ReactNode } from "react"
 import logo from "./../../../../../public/min-logo.svg"
 import { getCurrentUser } from "@/faetures/auth/apis/auth"
 import { connectNewVehicle } from "../../apis/vehicle"
+import { Logout } from "@mui/icons-material"
+import { clearCookies } from "@/utils/cookie_helper"
+import { Button } from "@radix-ui/themes"
 
 export default function DashboardTemplate(props: { items: VehicleDto[], children: ReactNode }) {
     const hook = useSidebarContext()
@@ -18,6 +21,13 @@ export default function DashboardTemplate(props: { items: VehicleDto[], children
             <div className={s.logo}>
                 <Image src={logo} alt="" />
             </div>
+            {props.items.length < 1 ? <Button onClick={() => {
+                localStorage.clear()
+                clearCookies()
+                location.replace("/signin")
+            }} variant="soft" color="red">
+                <Logout fontSize={"small"} /><span>Log Out</span>
+            </Button>  :null}
             <div className={s.contents}>
                 <VehicleItems
                     onAddItemClick={async () => {

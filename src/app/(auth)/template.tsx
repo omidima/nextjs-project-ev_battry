@@ -4,8 +4,14 @@ import Image from "next/image";
 import logo from "../../../public/Logo.svg"
 import s from "./page.module.scss"
 import { Box, Grid } from "@mui/material";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export default function Template({ children }: { children: ReactNode }) {
+    if (cookies().get("access_token")?.value) {
+        redirect("/dashboard")
+    }
+
     return <Box>
         <Grid container>
             <Grid item xl={4} lg={4} md={6} sm={6} xs={0} className={s.sidebar}>
