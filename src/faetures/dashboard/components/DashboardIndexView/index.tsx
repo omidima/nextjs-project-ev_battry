@@ -52,10 +52,10 @@ export default function DashboardStatusCard() {
                 <div className={`${s.card} ${s.dark}`}>
                     <h3>Remaining Warranty (Months)</h3>
                     <Flex align={"end"} gap={"4"}>
-                        <div><h1>{vehicle.active?.battery_warranty_months} Months </h1> </div>
+                        <div><h1>{vehicle.active?.battery_remaining_warranty_months} Months </h1> </div>
                         <div><p>/ {vehicle.active.battery_warranty_months} Months</p></div>
                     </Flex>
-                    <BorderLinearProgress aria="dark" variant="determinate" value={Number(vehicle.active?.battery_warranty_months ?? 0) * 100 / Number(vehicle.active.battery_warranty_months ?? 0)} />
+                    <BorderLinearProgress aria="dark" variant="determinate" value={Number(vehicle.active?.battery_remaining_warranty_months ?? 0) * 100 / Number(vehicle.active.battery_warranty_months ?? 0)} />
                 </div>
             </Grid>
             <Grid item xl={6} lg={6} md={12} sm={12} xs={12} paddingBottom={10}>
