@@ -43,3 +43,14 @@
     border-radius: 16px;
     border: 1px solid rgba(238, 238, 238, 1);
 }
+
+.di_button {
+    background: rgba(249, 249, 249, 1);
+    border-radius: 8px;
+    padding: 14px 22px;
+    width: 100%;
+    border: 0;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}

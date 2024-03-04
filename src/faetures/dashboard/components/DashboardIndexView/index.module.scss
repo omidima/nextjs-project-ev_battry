@@ -47,7 +47,7 @@
     }
 
     color: black;
-    gap: 24px;
+    gap: 10px;
     background-color: rgba(172, 245, 176, 1);
 }
 
@@ -56,4 +56,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.body {
+    height: 100vh;
+    overflow: auto;
+
+    @media (max-width: 900px) {
+        & {
+            height: auto;
+            overflow-y: hidden !important;
+        }
+    }
 }
