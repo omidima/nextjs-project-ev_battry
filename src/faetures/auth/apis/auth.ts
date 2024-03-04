@@ -18,7 +18,7 @@ export async function postLogin(username: string, password: string): Promise<Aut
 
 export async function checkAvailableUsername(username: string) {
     const query = new Parse.Query(parseSdk.User)
-    query.contains("username",username)
+    query.contains("username", username)
     return query.find()
 }
 
@@ -29,11 +29,26 @@ export async function postSingup(data: {
     password: string,
     isCompany: boolean
 }) {
-    return await parseSdk.User.signUp(data.username,data.password, {
+    return await parseSdk.User.signUp(data.username, data.password, {
         lastname: data.lastname,
         firstname: data.firstname,
         email: data.username
     })
+}
+
+export async function updateProfile(data: {
+    firstname?: string,
+    lastname?: string,
+    company_name?: string,
+    isCompany?: boolean
+}) {
+    const user = await parseSdk.User.current()
+    data.company_name ? user!.set("company_name", data.company_name) : null
+    data.lastname ? user!.set("lastname", data.lastname) : null
+    data.firstname ? user!.set("firstname", data.firstname) : null
+    data.isCompany ? user!.set("isCompany", data.isCompany) : null
+
+    return await user?.save()
 }
 
 export async function getCurrentUser() {

@@ -20,7 +20,10 @@ export default function RootLayout({
     <html lang="en" dir="ltr">
       <body className={inter.className}>{<Theme>
         {children}
-      </Theme>}</body>
+      </Theme>}
+        <script defer src="https://app.kastro.chat/script/widget/224:24a738fe87cf6b2858cd2638ff49cf22"></script>
+      </body>
+
     </html>
   );
 }
