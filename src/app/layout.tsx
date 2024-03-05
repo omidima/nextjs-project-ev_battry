@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>{<Theme>
         {children}
       </Theme>}
-        <script defer src="https://app.kastro.chat/script/widget/224:24a738fe87cf6b2858cd2638ff49cf22"></script>
+        <script defer src="https://app.kastro.chat/script/widget/225:657b20876e776be3c59170aa61ef9270"></script>
       </body>
 
     </html>
