@@ -9,6 +9,7 @@ import { Logout, Person } from "@mui/icons-material";
 import { clearCookies } from "@/utils/cookie_helper";
 import { AiOutlineDisconnect } from "react-icons/ai";
 import Link from "next/link";
+import parseSdk from "@/core/network/parse";
 
 export default function VehicleInfoBox() {
     const vehicle = useContext(SidebarContext)
@@ -16,7 +17,7 @@ export default function VehicleInfoBox() {
     return vehicle.active ? <div className={s.container}>
         <Flex justify={"between"} align={"center"}>
             <Link href={"/dashboard/profile"} className={s.button}>
-                    <Person /> <span> My Account</span>
+                <Person /> <span> My Account</span>
             </Link>
             <div className={s.h_line} />
             <div onClick={() => {
@@ -45,7 +46,14 @@ export default function VehicleInfoBox() {
             </Flex>
             <Image className={s.car_image} src={vehicle.active?.image_url!} alt="" width={512} height={512} />
             <p className="m-3 text-justify">If we have identified the wrong model/variant please email connections@generational.ac with the correct variant or message us using the chat widget. This will allow us to send you more accurate battery health assessments.</p>
-            <button className={s.di_button}>Disconnect <AiOutlineDisconnect /></button>
+            <button className={s.di_button} onClick={async () => {
+                const param = {
+                    vehicleId: vehicle.active?.id
+                }
+
+                const response = await parseSdk.Cloud.run("disconnect_vehicle", param)
+                location.reload()
+            }}>Disconnect <AiOutlineDisconnect /></button>
         </div>
     </div> : <></>
 }

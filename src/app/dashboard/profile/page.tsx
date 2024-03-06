@@ -7,9 +7,12 @@ import { Switch } from "@radix-ui/themes";
 import Button from "@/core/components/Button";
 import { useEffect, useRef, useState } from "react";
 import { getCurrentUser, updateProfile } from "@/faetures/auth/apis/auth";
+import parseSdk from "@/core/network/parse";
+import { clearCookies } from "@/utils/cookie_helper";
 
 export default function Page() {
     const [isCompany, setCompanyState] = useState(false)
+    const confirm = useRef(false)
     const [user, setUser] = useState<null | Parse.User>(null)
 
     useEffect(() => {
@@ -54,7 +57,7 @@ export default function Page() {
                                 {isCompany ? <>
                                     <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Company name</Grid>
                                     <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-                                        <input name="company_name" className={s.input} defaultValue={user?.get("company_name")}/>
+                                        <input name="company_name" className={s.input} defaultValue={user?.get("company_name")} />
                                     </Grid>
                                 </> : null}
 
@@ -93,7 +96,9 @@ export default function Page() {
                             <p>For extra security, this requires you to confirm your email or phone number when you reset your password. Learn more</p>
                         </Alert>
                         <Grid item xl={12} lg={12} md={12} sm={12} xs={12} gap={"10px"} display={"flex"} paddingTop={"30px"} paddingBottom={"30px"}>
-                            <input type="checkbox" style={{
+                            <input type="checkbox" defaultChecked={confirm.current} onChange={(e) => {
+                                confirm.current = e.currentTarget.value == "on"
+                            }} style={{
                                 padding: "10px",
                                 width: "24px",
                                 background: "rgba(243, 246, 249, 1)",
@@ -103,7 +108,16 @@ export default function Page() {
                         </Grid>
                         <Grid item xl={12} lg={12} md={12} sm={12} xs={12} justifyContent={"end"} display={"flex"}>
                             <div style={{ width: 180 }}>
-                                <Button text="Deactivate Account" type="error" />
+                                <Button text="Deactivate Account" type="error" onClick={async () => {
+                                    if (confirm.current) {
+                                        await parseSdk.User.current()?.destroy()
+                                        localStorage.clear()
+                                        clearCookies()
+                                        location.replace("/signup")
+                                    } else {
+                                        alert("For deactivate your account, should enable 'confirm account deactivation' check box.")
+                                    }
+                                }} />
                             </div>
                         </Grid>
                     </div>
