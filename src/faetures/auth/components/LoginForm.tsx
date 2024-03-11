@@ -43,12 +43,12 @@ export default function LoginForm() {
             onClose={handleClose}
             message="Login in failed! please try again"
         />
-        <h1 className="mb-6">Sign In to Generational</h1>
+        <h1 className="mb-6">Sign in to Generational</h1>
         <div className="mb-4">
             <TextFieldInput label="Email" type="email" name="email" required />
         </div>
         <div className="mb-4">
-            <TextFieldInput label="Passsword" type="password" lead={<Link href={"/forget-password"}>Forget Password?</Link>} name="password" required />
+            <TextFieldInput label="Passsword" type="password" lead={<Link href={"/forget-password"}>Forget password?</Link>} name="password" required />
         </div>
         <Button text="Sign In" type="primary" onClick={async () => {
             try {
@@ -67,7 +67,6 @@ export default function LoginForm() {
             }
         }} />
         <div className={`login_button text-center mt-6`}>
-            <span>New Here? </span>
             <Link href={"/signup"}><span>Create an Account</span></Link>
         </div>
     </form>

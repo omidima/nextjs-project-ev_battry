@@ -27,12 +27,14 @@ export async function postSingup(data: {
     firstname: string,
     lastname: string,
     password: string,
-    isCompany: boolean
+    companyName?: string
 }) {
     return await parseSdk.User.signUp(data.username, data.password, {
         lastname: data.lastname,
         firstname: data.firstname,
-        email: data.username
+        email: data.username,
+        company_name: data.companyName,
+        isCompany: data.companyName != undefined
     })
 }
 

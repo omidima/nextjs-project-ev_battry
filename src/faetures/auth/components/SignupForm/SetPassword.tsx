@@ -108,10 +108,12 @@ export default function SetPassword(props: { onBack: () => void }) {
             <Button text="Sign Up" type="primary" onClick={async () => {
                 const password = document.querySelector<HTMLInputElement>("input[name='password']")?.value;
                 const confirm = document.querySelector<HTMLInputElement>("input[name='c_password']")?.value;
-                if (password === confirm) {
+
+                if (password === confirm && Object.entries(score).filter(item => item[1] == true).length >= 3) {
                     const email = document.querySelector<HTMLInputElement>("input[name='email']")?.value;
                     const first_name = document.querySelector<HTMLInputElement>("input[name='first_name']")?.value;
                     const last_name = document.querySelector<HTMLInputElement>("input[name='last_name']")?.value;
+                    const company_name = document.querySelector<HTMLInputElement>("input[name='company']")?.value;
 
                     try {
                         const response = await postSingup({
@@ -119,7 +121,7 @@ export default function SetPassword(props: { onBack: () => void }) {
                             firstname: first_name!,
                             lastname: last_name!,
                             password: password!,
-                            isCompany: false
+                            companyName: company_name,
                         })
 
                         setCookie(USER_DATA, JSON.stringify(response))
@@ -131,6 +133,10 @@ export default function SetPassword(props: { onBack: () => void }) {
                         setOpen(true)
                     }
 
+                    setError(undefined)
+
+                } else {
+                    setError("Please check passwords again")
                 }
             }} />
             <div className="mb-4" />

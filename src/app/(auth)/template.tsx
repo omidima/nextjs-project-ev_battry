@@ -18,9 +18,12 @@ export default function Template({ children }: { children: ReactNode }) {
                 <Image className={s.cover} src={image} alt="" width={512} height={512} />
                 <div className={s.content}>
                     <Image src={logo} alt="" />
-                    <p className="mb-4">The signup process takes less than 2 mins and involves us securely connecting to your connected car account. </p>
-                    <p className="mb-4">We use data from your battery usage and charging habits to deliver a fully personalized report for your vehicle over email. </p>
-                    <p className="mb-4">The report is generated after we’ve collected enough data to confidently assess your battery’s state-of-health and can take up to 6 weeks depending on how often you charge your vehicle</p>
+                    <p className="mb-4">Welcome to Generational, sign-up your EV to receive free battery health checks.</p>
+                    <p className="mb-4">The sign-up process takes less than two minutes and involves us securely connecting to your connected car account. </p>
+                    <p className="mb-4">We use data from your battery usage and charging habits to deliver a fully personalised report for your vehicle. </p>
+                    <p className="mb-4">Once we have connected enough charging data we will email you a battery health assessment including tailored advice on how to extend its lifetime.</p>
+                    <p className="mb-4">Our application is in Beta. Please email us at support@generational.ac or message us using the chat widget if you have any issues.</p>
+                    <p className="mb-4">The service is currently only available for UK EVs.</p>
                 </div>
 
             </Grid>
