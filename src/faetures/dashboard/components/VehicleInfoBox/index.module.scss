@@ -3,10 +3,12 @@
     height: 100vh;
     padding: 10px;
     width: 100%;
+    display: grid;
+    align-content: space-between;
 
     hr {
-        color: rgba(169, 167, 188, 1);
-        border-color: solid rgba(169, 167, 188, 1);
+        color: #F3F3F3;
+        border-color: solid #F3F3F3;
     }
 }
 
@@ -23,7 +25,7 @@
 }
 
 .h_line {
-    background-color: rgba(169, 167, 188, 1);
+    background-color: #F3F3F3;
     width: 1px;
     height: 20px;
     margin: 0 15px;
@@ -33,6 +35,7 @@
     p {
         font-weight: bold;
     }
+
     padding: 32px 30px;
     padding-top: 60px;
     font-size: 16px;
@@ -55,4 +58,32 @@
     justify-content: space-between;
     font-weight: bold;
     cursor: pointer;
+}
+
+.content {
+    height: 100%;
+    overflow: auto;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 30px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    p {
+        font-size: 12px;
+        font-weight: 300;
+        color: #828282;
+    }
+
+    a {
+        color: #828282;
+        text-decoration: none;
+    }
 }

@@ -9,7 +9,7 @@ export default function Page() {
     return <div className={s.container}>
         <Grid container>
             <Grid item xl={8} lg={8} md={6} sm={12} xs={12} className={s.content}>
-                    <DashboardStatusCard />
+                <DashboardStatusCard />
             </Grid>
             <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
                 <VehicleInfoBox />

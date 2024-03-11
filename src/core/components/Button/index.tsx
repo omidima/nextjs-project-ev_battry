@@ -6,7 +6,8 @@ import { CircularProgress } from "@mui/material"
 
 interface Props {
     type?: "primary" | "outline" | "text" | "soft" | "error",
-    text: string
+    text: string,
+    full?: boolean,
     onClick?: () => void
 
 }
@@ -29,11 +30,15 @@ export default function Button(props: Props) {
                 return s.error
         }
     }
-    return <div className={handleType()} onClick={async () => {
-        setLoading(true)
-        props.onClick ? await props.onClick!() : null
-        setLoading(false)
-    }}>
+    return <div className={handleType()}
+        style={{
+            width: props.full ? "w-100" : "fit-content"
+        }}
+        onClick={async () => {
+            setLoading(true)
+            props.onClick ? await props.onClick!() : null
+            setLoading(false)
+        }}>
         <span>{loading ? <CircularProgress size={"20px"} color={props.type === "primary" ? "inherit" : "primary"} /> : props.text}</span>
     </div>
 }

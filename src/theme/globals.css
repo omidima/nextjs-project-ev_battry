@@ -1,4 +1,21 @@
 
+@media screen and (device-aspect-ratio: 2/3) {
+  select, textarea, input{ font-size: 16px; }
+}
+
+@media screen and (device-aspect-ratio: 40/71) {
+  select, textarea, input{ font-size: 16px; }
+}
+
+@media screen and (device-aspect-ratio: 375/667) {
+  select, textarea, input{ font-size: 16px; }
+}
+
+@media screen and (device-aspect-ratio: 9/16) {
+  select, textarea, input{ font-size: 16px; }
+}
+
+
 body {
   padding: 0;
   margin: 0;

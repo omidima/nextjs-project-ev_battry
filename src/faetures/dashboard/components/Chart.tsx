@@ -24,9 +24,9 @@ export default function Chart(props: { value: number, title: string }) {
                             x2: 0,
                             y2: 1,
                             colorStops: [{
-                                offset: 0, color: 'rgba(231, 73, 63, 1)'  // color at 0%
+                                offset: 0, color: "#ACF5B0",//'rgba(231, 73, 63, 1)'  // color at 0%
                             }, {
-                                offset: 1, color: 'rgba(80, 205, 137, 1)' // color at 100%
+                                offset: 1, color: "#ACF5B0" //'rgba(80, 205, 137, 1)' // color at 100%
                             }],
                             global: false // default is false,
                         }

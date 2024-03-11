@@ -16,7 +16,7 @@ interface Props {
 }
 
 
-export default function Modal(props: Props) {
+export default function AppModal(props: Props) {
 
     const [state, setState] = useState(false)
     const router = useRouter()
@@ -35,10 +35,6 @@ export default function Modal(props: Props) {
         return props.state ? <>
             <div className={props.isFull ? s.bg_1 : s.bg} onClick={() => { props.setState!(false); props.onClose(); }} />
             <div className={props.isFull ? s.container_full : s.container}>
-                <Flex gap={"4"} onClick={() => setState(false)}>
-                    <RiCloseLine />
-                    <span>Close</span>
-                </Flex>
                 {props.children}
             </div></> : <div onClick={() => {
                 props.setState!(true);
@@ -48,15 +44,11 @@ export default function Modal(props: Props) {
         </div>
     } else {
         return state ? <>
-            <div className={props.isFull ? s.bg_1 : s.bg} onClick={() => { props.setState!(false); props.onClose(); }} />
+            <div className={props.isFull ? s.bg_1 : s.bg} onClick={() => { setState!(false); props.onClose(); }} />
             <div className={props.isFull ? s.container_full : s.container}>
-                <Flex gap={"4"} onClick={() => props.setState!(false)}>
-                    <RiCloseLine />
-                    <span>Close</span>
-                </Flex>
                 {props.children}
             </div></> : <div onClick={() => {
-                props.setState!(true)
+                setState!(true)
                 router.push("?openModal", { scroll: false })
             }}>
             {props.disableChild}

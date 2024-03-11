@@ -3,7 +3,7 @@
 import VehicleInfoBox from "@/faetures/dashboard/components/VehicleInfoBox";
 import { Alert, Grid } from "@mui/material";
 import s from "./../dashboard.module.scss"
-import { Switch } from "@radix-ui/themes";
+import { Flex, Switch } from "@radix-ui/themes";
 import Button from "@/core/components/Button";
 import { useEffect, useRef, useState } from "react";
 import { getCurrentUser, updateProfile } from "@/faetures/auth/apis/auth";
@@ -63,7 +63,7 @@ export default function Page() {
 
                                 <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Receive battery health report emails</Grid>
                                 <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-                                    <Switch size={"3"} defaultChecked={true}/>
+                                    <Switch size={"3"} defaultChecked={true} />
                                 </Grid>
 
                                 <Grid item xl={12} lg={12} md={12} sm={12} xs={12} justifyContent={"end"} display={"flex"}>
@@ -108,6 +108,7 @@ export default function Page() {
                         </Grid>
                         <Grid item xl={12} lg={12} md={12} sm={12} xs={12} justifyContent={"end"} display={"flex"}>
                             <div style={{ width: 180 }}>
+                                
                                 <Button text="Deactivate account" type="error" onClick={async () => {
                                     if (confirm.current) {
                                         await parseSdk.User.current()?.destroy()

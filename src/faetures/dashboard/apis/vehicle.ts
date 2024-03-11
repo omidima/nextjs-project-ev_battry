@@ -9,5 +9,5 @@ export async function getGetVehicles() : Promise<VehicleDto[]> {
 }
 
 export async function connectNewVehicle(url: string) {
-    window.open(`${url}`)
+    window.open(`${url}`,"_blank")
 }
