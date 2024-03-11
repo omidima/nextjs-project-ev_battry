@@ -45,7 +45,7 @@ export default function VehicleInfoBox() {
 
             </Flex>
             <Image className={s.car_image} src={vehicle.active?.image_url!} alt="" width={512} height={512} />
-            <p className="m-3 text-justify">If we have identified the wrong model/variant please email connections@generational.ac with the correct variant or message us using the chat widget. This will allow us to send you more accurate battery health assessments.</p>
+            <p className="m-3 text-justify">You will receive battery health reports once we have collected enough charging data.</p>
             <button className={s.di_button} onClick={async () => {
                 const param = {
                     vehicleId: vehicle.active?.id
@@ -55,5 +55,22 @@ export default function VehicleInfoBox() {
                 location.reload()
             }}>Disconnect <AiOutlineDisconnect /></button>
         </div>
-    </div> : <></>
+    </div> : <div className={s.container}>
+        <Flex justify={"between"} align={"center"}>
+            <Link href={"/dashboard/profile"} className={s.button}>
+                <Person /> <span> My Account</span>
+            </Link>
+            <div className={s.h_line} />
+            <div onClick={() => {
+                localStorage.clear()
+                clearCookies()
+                location.replace("/signin")
+            }} className={s.button}>
+                <Logout fontSize={"small"} /><span>Log Out</span>
+            </div>
+        </Flex>
+        <hr />
+        <div className="">
+        </div>
+    </div>
 }

@@ -21,13 +21,6 @@ export default function DashboardTemplate(props: { items: VehicleDto[], children
             <div className={s.logo}>
                 <Image src={logo} alt="" />
             </div>
-            {props.items.length < 1 ? <Button onClick={() => {
-                localStorage.clear()
-                clearCookies()
-                location.replace("/signin")
-            }} variant="soft" color="red">
-                <Logout fontSize={"small"} /><span>Log Out</span>
-            </Button>  :null}
             <div className={s.contents}>
                 <VehicleItems
                     onAddItemClick={async () => {

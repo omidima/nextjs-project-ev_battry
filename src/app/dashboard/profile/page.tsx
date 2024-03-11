@@ -42,12 +42,12 @@ export default function Page() {
                                     <input name="last_name" className={s.input} defaultValue={user?.get("lastname")} />
                                 </Grid>
 
-                                <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Email Address</Grid>
+                                <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Email address</Grid>
                                 <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                                     <input disabled name="email" className={s.input} defaultValue={user?.getEmail()} />
                                 </Grid>
 
-                                <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>I’m a Company Manager</Grid>
+                                <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Fleet manager</Grid>
                                 <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                                     <Switch size={"3"} onCheckedChange={(e) => {
                                         setCompanyState(e)
@@ -61,14 +61,14 @@ export default function Page() {
                                     </Grid>
                                 </> : null}
 
-                                <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Receiving  battery health report emails</Grid>
+                                <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Receive battery health report emails</Grid>
                                 <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-                                    <Switch size={"3"} />
+                                    <Switch size={"3"} defaultChecked={true}/>
                                 </Grid>
 
                                 <Grid item xl={12} lg={12} md={12} sm={12} xs={12} justifyContent={"end"} display={"flex"}>
                                     <div style={{ width: 136 }}>
-                                        <Button text="Save Changes" type="primary" onClick={async () => {
+                                        <Button text="Save changes" type="primary" onClick={async () => {
                                             const first_name = document.querySelector<HTMLInputElement>("input[name='first_name']")?.value
                                             const last_name = document.querySelector<HTMLInputElement>("input[name='last_name']")?.value
                                             const company_name = document.querySelector<HTMLInputElement>("input[name='company_name']")?.value
@@ -88,12 +88,12 @@ export default function Page() {
                 </form>
                 <div className={`${s.profile_form} m-3`}>
                     <div className={s.head}>
-                        <h2>Deactivate Account</h2>
+                        <h2>Deactivate account</h2>
                     </div>
                     <div className={s.content}>
                         <Alert severity="warning">
                             <strong>You are deactivatiing your account</strong>
-                            <p>For extra security, this requires you to confirm your email or phone number when you reset your password. Learn more</p>
+                            <p>All vehicles will be disconnected and you will need to set-up a new account to rejoin the service.</p>
                         </Alert>
                         <Grid item xl={12} lg={12} md={12} sm={12} xs={12} gap={"10px"} display={"flex"} paddingTop={"30px"} paddingBottom={"30px"}>
                             <input type="checkbox" defaultChecked={confirm.current} onChange={(e) => {
@@ -108,14 +108,14 @@ export default function Page() {
                         </Grid>
                         <Grid item xl={12} lg={12} md={12} sm={12} xs={12} justifyContent={"end"} display={"flex"}>
                             <div style={{ width: 180 }}>
-                                <Button text="Deactivate Account" type="error" onClick={async () => {
+                                <Button text="Deactivate account" type="error" onClick={async () => {
                                     if (confirm.current) {
                                         await parseSdk.User.current()?.destroy()
                                         localStorage.clear()
                                         clearCookies()
                                         location.replace("/signup")
                                     } else {
-                                        alert("For deactivate your account, should enable 'confirm account deactivation' check box.")
+                                        alert("To deactivate your account, check the ‘Confirm account deactivation’ box.")
                                     }
                                 }} />
                             </div>

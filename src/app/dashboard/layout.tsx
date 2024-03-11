@@ -26,7 +26,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         setLoading(true)
         getCurrentUser().then((r) => {
             if (r.getUsername()) {
-                getData().then(r => { setData(r); setLoading(false); })
+                getData().then(r => {setData(r); setLoading(false);}).catch((r) => setLoading(false))
 
                 document.addEventListener("visibilitychange", function () {
                     if (!document.hidden) {
@@ -45,7 +45,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
     return <>
         <Box>
-            <Grid container>
+            <Grid container >
                 <DashboardTemplate items={data ?? []}>
                     {loading ? <div style={{
                         position: "absolute",
