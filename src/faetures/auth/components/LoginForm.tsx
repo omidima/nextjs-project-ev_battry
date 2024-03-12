@@ -50,7 +50,7 @@ export default function LoginForm() {
         <div className="mb-4">
             <TextFieldInput label="Passsword" type="password" lead={<Link href={"/forget-password"}>Forget password?</Link>} name="password" required />
         </div>
-        <Button text="Sign In" type="primary" onClick={async () => {
+        <Button full text="Sign In" type="primary" onClick={async () => {
             try {
                 const response = await postLogin(
                     document.querySelector<HTMLInputElement>("input[name='email']")?.value!,

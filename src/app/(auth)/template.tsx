@@ -13,8 +13,8 @@ export default function Template({ children }: { children: ReactNode }) {
     }
 
     return <Box>
-        <Grid container>
-            <Grid item xl={4} lg={4} md={6} sm={6} xs={0} className={s.sidebar}>
+        <Grid container height={"100vh"} overflow={"auto"}>
+            <Grid item xl={4} lg={4} md={6} sm={12} xs={12}  className={s.sidebar}>
                 <Image className={s.cover} src={image} alt="" width={512} height={512} />
                 <div className={s.content}>
                     <Image src={logo} alt="" />
@@ -27,7 +27,7 @@ export default function Template({ children }: { children: ReactNode }) {
                 </div>
 
             </Grid>
-            <Grid item xl={8} lg={8} md={6} sm={6} xs={12} className={s.form_body}>
+            <Grid item xl={8} lg={8} md={6} sm={12} xs={12} className={s.form_body}>
                 {children}
             </Grid>
         </Grid>

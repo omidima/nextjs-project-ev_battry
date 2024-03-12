@@ -3,13 +3,13 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
 
-export default function Chart(props: { value: number, title: string }) {
+export default function Chart(props: { value: number, title: string, max: number }) {
     const option = {
         series: [
             {
                 type: 'gauge',
                 min: 0,
-                max: 500,
+                max: props.max,
                 progress: {
                     show: true,
                     overlap: true,
@@ -72,7 +72,7 @@ export default function Chart(props: { value: number, title: string }) {
                 },
                 data: [
                     {
-                        value: 100,
+                        value: props.value,
                         name: props.title,
                         title: {
                             show: true

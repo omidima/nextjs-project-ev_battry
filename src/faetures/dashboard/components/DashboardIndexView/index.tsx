@@ -74,7 +74,7 @@ export default function DashboardStatusCard() {
                     <div className={`${s.card} ${s.simple}`}>
                         <h3>Real max range</h3>
                         <p>The estimated maximum distance the vehicle can travel on a full charge compared to the WLTP published value.</p>
-                        <Chart title="miles" value={Number(vehicle.active.real_combined_max_range_miles ?? 0)} />
+                        <Chart title="miles" value={Number(vehicle.active.real_combined_max_range_miles ?? 0)} max={Number(vehicle.active.wltp_range_miles)}/>
                         <p>Based on combined city and motorway driving in mild weather (23 degC) and no use of A/C. The actual range will depend on speed, style of driving, weather and route conditions</p>
                     </div>
                 </Grid>
@@ -82,7 +82,7 @@ export default function DashboardStatusCard() {
                     <div className={`${s.card} ${s.simple}`}>
                         <h3>Real battery efficiency</h3>
                         <p>The energy consumption of the vehicle measured in kilowatt hours per mile compared to the WLTP published value.</p>
-                        <Chart title="Wh/mi" value={Number(vehicle.active.real_battery_efficiency_mi_per_kwh ?? 0)} />
+                        <Chart title="Wh/mi" value={Number(vehicle.active.real_battery_efficiency_mi_per_kwh ?? 0)} max={Number(vehicle.active.wltp_efficiency_mi_per_kwh)}/>
                         <p>Based on combined city and motorway driving in mild weather (23 degC) and no use of A/C. The actual range will depend on speed, style of driving, weather and route conditions</p>
                     </div>
                 </Grid>

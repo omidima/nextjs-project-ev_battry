@@ -105,7 +105,7 @@ export default function SetPassword(props: { onBack: () => void }) {
                 <TextFieldInput error={error} label="Confirm Password" type="password" name="c_password" required />
             </div>
 
-            <Button text="Sign Up" type="primary" onClick={async () => {
+            <Button full text="Sign Up" type="primary" onClick={async () => {
                 const password = document.querySelector<HTMLInputElement>("input[name='password']")?.value;
                 const confirm = document.querySelector<HTMLInputElement>("input[name='c_password']")?.value;
 

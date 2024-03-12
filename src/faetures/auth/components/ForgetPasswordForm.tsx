@@ -12,10 +12,10 @@ export default function ForgetPasswordForm() {
         <div className="mb-4">
             <TextFieldInput label="Email" type="email" name="email" />
         </div>
-        <Button text="Send Email" type="primary" onClick={async () => {
+        <Button full text="Send Email" type="primary" onClick={async () => {
 
         }} />
-        <Button text="Back" type="text" onClick={async () => {
+        <Button full text="Back" type="text" onClick={async () => {
             history.back()
         }} />
     </form>

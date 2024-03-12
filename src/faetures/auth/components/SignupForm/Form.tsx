@@ -96,7 +96,7 @@ export default function Form(props: { onSubmit: () => void }) {
             {isActiveCompanyField ? <div className="mb-4">
                 <TextFieldInput label="Company name" type="text" name="company" required />
             </div> : null}
-            <Button text="Continue" type="primary" onClick={async () => {
+            <Button full text="Continue" type="primary" onClick={async () => {
 
                 if (validateForm()) {
                     const result = await isAvailable(document.querySelector<HTMLInputElement>("input[name='email']")?.value!)

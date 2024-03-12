@@ -13,6 +13,7 @@ export interface VehicleDto {
     battery_remaining_warranty_miles?: string
     real_combined_max_range_miles?: string
     wltp_range_miles?: string
+    wltp_efficiency_mi_per_kwh?: string
     real_battery_efficiency_mi_per_kwh?: string
     image_url?: string
 }
