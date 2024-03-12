@@ -42,13 +42,15 @@ export async function updateProfile(data: {
     firstname?: string,
     lastname?: string,
     company_name?: string,
-    isCompany?: boolean
+    isCompany?: boolean,
+    received_battery_repo?: boolean
 }) {
     const user = await parseSdk.User.current()
     data.company_name ? user!.set("company_name", data.company_name) : null
     data.lastname ? user!.set("lastname", data.lastname) : null
     data.firstname ? user!.set("firstname", data.firstname) : null
     data.isCompany ? user!.set("isCompany", data.isCompany) : null
+    user!.set("received_bat_health_rep", data.received_battery_repo ?? false)
 
     return await user?.save()
 }

@@ -13,6 +13,8 @@ import DashboardAppbar from "@/faetures/dashboard/components/DashboardAppbar";
 
 export default function Page() {
     const [isCompany, setCompanyState] = useState(false)
+    const [receivedBatteryRepoState, setReceivedBatteryRepoState] = useState(true)
+
     const confirm = useRef(false)
     const [user, setUser] = useState<null | Parse.User>(null)
     const isDesktop = window.innerWidth > 900
@@ -21,6 +23,7 @@ export default function Page() {
         getCurrentUser().then((e) => {
             setUser(e)
             setCompanyState(e.get("isCompany"))
+            setReceivedBatteryRepoState(e.get("received_bat_health_rep") ?? false)
         })
     }, [])
 
@@ -66,7 +69,9 @@ export default function Page() {
 
                                 <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Receive battery health report emails</Grid>
                                 <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-                                    <Switch size={"3"} defaultChecked={true} />
+                                    <Switch size={"3"} checked={receivedBatteryRepoState} onCheckedChange={(e) => {
+                                        setReceivedBatteryRepoState(e)
+                                    }} />
                                 </Grid>
 
                                 <Grid item xl={12} lg={12} md={12} sm={12} xs={12} justifyContent={"end"} display={"flex"}>
@@ -80,7 +85,8 @@ export default function Page() {
                                                 firstname: first_name,
                                                 lastname: last_name,
                                                 company_name: company_name,
-                                                isCompany: isCompany
+                                                isCompany: isCompany,
+                                                received_battery_repo: receivedBatteryRepoState
                                             })
                                         }} />
                                     </div>
