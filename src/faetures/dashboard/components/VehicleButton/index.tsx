@@ -1,10 +1,9 @@
 "use client"
 
-import { ReactNode } from "react";
 import s from "./index.module.scss";
 import { VehicleDto } from "../../types/vehicle.dto";
-import { SiMercedes, SiTesla } from "react-icons/si";
 import { BiPlus } from "react-icons/bi";
+import Image from "next/image";
 
 interface Props {
     isActive?: boolean;
@@ -16,14 +15,11 @@ interface Props {
 export default function VehicleButton(props: Props) {
     function returnLogo() {
         switch (props.item.make) {
-            case "tesla":
-                return <SiTesla />
-            case "Mercedes-Benz":
-                return <SiMercedes />
             case "add":
                 return <BiPlus />
-            case "simulator":
-                return <SiTesla />
+
+            default:
+                return <Image src={props.item.logo_url!} width={50} height={50} alt={""} />
         }
     }
 

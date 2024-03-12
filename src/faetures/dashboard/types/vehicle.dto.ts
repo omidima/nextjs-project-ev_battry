@@ -16,4 +16,5 @@ export interface VehicleDto {
     wltp_efficiency_mi_per_kwh?: string
     real_battery_efficiency_mi_per_kwh?: string
     image_url?: string
+    logo_url?: string
 }

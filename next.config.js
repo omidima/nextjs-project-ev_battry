@@ -4,7 +4,7 @@
 const nextConfig = {
     // output: 'export',
     images: {
-      domains: ["ev-database.org"]
+      domains: ["ev-database.org", "raw.githubusercontent.com"]
     }
    
     // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
