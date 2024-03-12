@@ -9,11 +9,13 @@ import { useEffect, useRef, useState } from "react";
 import { getCurrentUser, updateProfile } from "@/faetures/auth/apis/auth";
 import parseSdk from "@/core/network/parse";
 import { clearCookies } from "@/utils/cookie_helper";
+import DashboardAppbar from "@/faetures/dashboard/components/DashboardAppbar";
 
 export default function Page() {
     const [isCompany, setCompanyState] = useState(false)
     const confirm = useRef(false)
     const [user, setUser] = useState<null | Parse.User>(null)
+    const isDesktop = window.innerWidth > 900
 
     useEffect(() => {
         getCurrentUser().then((e) => {
@@ -23,7 +25,8 @@ export default function Page() {
     }, [])
 
     return <div className={s.container}>
-        <Grid container>
+        {isDesktop ? null : <DashboardAppbar />}
+        <Grid container className={isDesktop ? undefined : "mt-5"}>
             <Grid item xl={8} lg={8} md={6} sm={12} xs={12} className={s.body}>
                 <form>
                     <div className={`${s.profile_form} m-3`}>
@@ -108,7 +111,7 @@ export default function Page() {
                         </Grid>
                         <Grid item xl={12} lg={12} md={12} sm={12} xs={12} justifyContent={"end"} display={"flex"}>
                             <div style={{ width: 180 }}>
-                                
+
                                 <Button text="Deactivate account" type="error" onClick={async () => {
                                     if (confirm.current) {
                                         await parseSdk.User.current()?.destroy()

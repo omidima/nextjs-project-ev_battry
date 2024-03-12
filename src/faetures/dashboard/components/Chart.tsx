@@ -4,6 +4,7 @@ import React from "react";
 import ReactEcharts from "echarts-for-react";
 
 export default function Chart(props: { value: number, title: string, max: number }) {
+    const lineSize = (window.innerWidth / 20) < 25 ? window.innerWidth / 20 : 25
     const option = {
         series: [
             {
@@ -12,9 +13,9 @@ export default function Chart(props: { value: number, title: string, max: number
                 max: props.max,
                 progress: {
                     show: true,
-                    overlap: true,
+                    overlap: false,
                     roundCap: true,
-                    width: 25,
+                    width: lineSize,
                     itemStyle: {
 
                         color: {
@@ -34,7 +35,7 @@ export default function Chart(props: { value: number, title: string, max: number
                 },
                 axisLine: {
                     lineStyle: {
-                        width: 25,
+                        width: lineSize,
                         cap: "round",
                         miterLimit: 10
                     }
@@ -43,23 +44,23 @@ export default function Chart(props: { value: number, title: string, max: number
                     show: true
                 },
                 splitLine: {
-                    length: 10,
-                    distance: 10,
+                    length: lineSize < 25 ? 8 : 10,
+                    distance: lineSize < 25 ? 8 : 10,
                     lineStyle: {
-                        width: 2,
+                        width: lineSize < 25 ? 0 : 2,
                         color: '#999'
                     }
                 },
                 axisLabel: {
-                    distance: 30,
+                    distance: lineSize < 25 ? 25 : 30,
                     color: '#999',
-                    fontSize: 12
+                    fontSize: lineSize < 25 ? 8 : 12
                 },
                 anchor: {
 
-                    size: 12,
+                    size: lineSize < 25 ? 6 : 12,
                     itemStyle: {
-                        borderWidth: 5
+                        borderWidth: lineSize < 25 ? 1 : 5
                     }
                 },
                 title: {
@@ -67,8 +68,8 @@ export default function Chart(props: { value: number, title: string, max: number
                 },
                 detail: {
                     valueAnimation: true,
-                    fontSize: 30,
-                    offsetCenter: [0, '80%']
+                    fontSize: lineSize < 25 ? 25 : 30,
+                    offsetCenter: [0, '100%']
                 },
                 data: [
                     {

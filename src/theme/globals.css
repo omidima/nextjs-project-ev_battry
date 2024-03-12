@@ -80,6 +80,14 @@ div {
   margin-bottom: 24px;
 }
 
+.mt-4 {
+  margin-top: 24px !important;
+}
+
+.mt-5 {
+  margin-top: 32px !important;
+}
+
 
 .m-3 {
   margin: 24px;
