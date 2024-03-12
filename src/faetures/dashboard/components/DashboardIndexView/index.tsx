@@ -8,6 +8,7 @@ import Image from "next/image";
 import emptyLogo from "../../../../../public/not-selected.svg"
 import { Flex } from "@radix-ui/themes";
 import Chart from "../Chart";
+import DashboardAppbar from "../DashboardAppbar";
 
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme, aria }: { theme?: Theme, aria: "green" | "dark" }) => ({
@@ -25,8 +26,10 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme, aria }: { theme?: 
 
 export default function DashboardStatusCard() {
     const vehicle = useContext(SidebarContext)
+    const isDesktop = window.innerWidth > 900
 
     return <>
+        {isDesktop ? null : <DashboardAppbar />}
         {vehicle.active ? <div className={s.body}>
             <Grid container spacing={2} rowSpacing={2} padding={2}>
                 <Grid item xl={6} lg={6} md={6} sm={6} xs={12} >
@@ -74,7 +77,7 @@ export default function DashboardStatusCard() {
                     <div className={`${s.card} ${s.simple}`}>
                         <h3>Real max range</h3>
                         <p>The estimated maximum distance the vehicle can travel on a full charge compared to the WLTP published value.</p>
-                        <Chart title="miles" value={Number(vehicle.active.real_combined_max_range_miles ?? 0)} max={Number(vehicle.active.wltp_range_miles)}/>
+                        <Chart title="miles" value={Number(vehicle.active.real_combined_max_range_miles ?? 0)} max={Number(vehicle.active.wltp_range_miles)} />
                         <p>Based on combined city and motorway driving in mild weather (23 degC) and no use of A/C. The actual range will depend on speed, style of driving, weather and route conditions</p>
                     </div>
                 </Grid>
@@ -82,7 +85,7 @@ export default function DashboardStatusCard() {
                     <div className={`${s.card} ${s.simple}`}>
                         <h3>Real battery efficiency</h3>
                         <p>The energy consumption of the vehicle measured in kilowatt hours per mile compared to the WLTP published value.</p>
-                        <Chart title="Wh/mi" value={Number(vehicle.active.real_battery_efficiency_mi_per_kwh ?? 0)} max={Number(vehicle.active.wltp_efficiency_mi_per_kwh)}/>
+                        <Chart title="Wh/mi" value={Number(vehicle.active.real_battery_efficiency_mi_per_kwh ?? 0)} max={Number(vehicle.active.wltp_efficiency_mi_per_kwh)} />
                         <p>Based on combined city and motorway driving in mild weather (23 degC) and no use of A/C. The actual range will depend on speed, style of driving, weather and route conditions</p>
                     </div>
                 </Grid>

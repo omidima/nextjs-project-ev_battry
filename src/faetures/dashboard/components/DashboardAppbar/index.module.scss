@@ -1,0 +1,26 @@
+.fixed_top {
+    top: 0;
+    left: 60px;
+    right: 0;
+    background-color: white;
+    position: fixed;
+}
+
+.button {
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: rgba(169, 167, 188, 1);
+    text-decoration: none;
+}
+
+.h_line {
+    background-color: #F3F3F3;
+    width: 1px;
+    height: 20px;
+    margin: 0 15px;
+}

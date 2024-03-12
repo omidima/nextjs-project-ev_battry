@@ -1,3 +1,10 @@
+.fixed_top {
+    top: 0;
+    left: 60px;
+    right: 0;
+    position: fixed;
+}
+
 .container {
     background-color: white;
     height: 100vh;
