@@ -1,7 +1,7 @@
 "use client"
 
-import { useContext } from "react"
-import { SidebarContext } from "../../contexts/sidebar_context"
+import { useContext, useEffect } from "react"
+import { SidebarContext, useSidebarContext } from "../../contexts/sidebar_context"
 import { VehicleDto } from "../../types/vehicle.dto"
 import VehicleButton from "../VehicleButton"
 
@@ -12,13 +12,17 @@ export default function VehicleItems(props: {
 }) {
     const vehicle = useContext(SidebarContext)
 
+    useEffect(() => {
+        props.onChange(props.items.reverse()[0])
+    }, [props.items.length])
+
     return <>
         {props.items.map((item, index) => <VehicleButton key={index} item={item} type={"item"} onSelect={() => { props.onChange(item) }} isActive={index === vehicle.active?.id} />)}
 
         {/* Add button */}
         <VehicleButton key={"add"} item={{
-            model:"Add vehicle",
-            make:  "add"
+            model: "Add vehicle",
+            make: "add"
         }} type={"default"} onSelect={async () => {
             props.onAddItemClick()
 

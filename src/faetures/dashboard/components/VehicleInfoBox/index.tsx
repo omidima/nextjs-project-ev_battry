@@ -23,7 +23,7 @@ export default function VehicleInfoBox() {
             <div className={s.content}>
                 {vehicle.active ? <>
                     <Flex className={s.title_box} align={"center"} gap={"4"}>
-                        <Image src={vehicleImage} alt="" />
+                        <Image src={vehicle.active.logo_url!} width={50} height={50} alt={""}/>
                         <div className="">
                             <p>{vehicle.active.make}</p>
                             <Flex align={"center"}>
