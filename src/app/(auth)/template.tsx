@@ -3,9 +3,11 @@ import image from "../../../public/login-bg.png";
 import Image from "next/image";
 import logo from "../../../public/Logo.svg"
 import s from "./page.module.scss"
-import { Box, Grid } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Flex } from "@radix-ui/themes";
+import Link from "next/link";
 
 export default function Template({ children }: { children: ReactNode }) {
     if (cookies().get("access_token")?.value) {
@@ -14,7 +16,7 @@ export default function Template({ children }: { children: ReactNode }) {
 
     return <Box>
         <Grid container overflow={"auto"}>
-            <Grid item xl={4} lg={4} md={6} sm={12} xs={12}  className={s.sidebar}>
+            <Grid item xl={4} lg={4} md={6} sm={12} xs={12} className={s.sidebar}>
                 <Image className={s.cover} src={image} alt="" width={512} height={512} />
                 <div className={s.content}>
                     <Image src={logo} alt="" />
@@ -29,6 +31,12 @@ export default function Template({ children }: { children: ReactNode }) {
             </Grid>
             <Grid item xl={8} lg={8} md={6} sm={12} xs={12} className={s.form_body}>
                 {children}
+                <Container maxWidth="xs" className={s.footer}>
+                    <Flex justify={"between"} >
+                        <Link href={"https://generational.ac/#terms-and-conditions"}>Terms and conditions</Link>
+                        <Link href={"https://generational.ac/#privacy"}>Privacy policy</Link>
+                    </Flex>
+                </Container>
             </Grid>
         </Grid>
     </Box>

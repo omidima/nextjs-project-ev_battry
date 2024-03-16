@@ -1,18 +1,37 @@
-
 @media screen and (device-aspect-ratio: 2/3) {
-  select, textarea, input{ font-size: 16px; }
+
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
 }
 
 @media screen and (device-aspect-ratio: 40/71) {
-  select, textarea, input{ font-size: 16px; }
+
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
 }
 
 @media screen and (device-aspect-ratio: 375/667) {
-  select, textarea, input{ font-size: 16px; }
+
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
 }
 
-@media screen and (device-aspect-ratio: 9/16) {
-  select, textarea, input{ font-size: 16px; }
+@media (max-width: 720px) {
+
+  select,
+  textarea,
+  input {
+    font-size: 16px !important;
+  }
 }
 
 
@@ -21,10 +40,10 @@ body {
   margin: 0;
   position: relative;
   width: 100%;
-  padding: 0 !important;
+  padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) env(safe-area-inset-bottom,
+      20px) env(safe-area-inset-left, 20px) !important;
   margin: 0 !important;
-  /* height: -webkit-fill-available; */
-  height: calc(50px + env(safe-area-inset-bottom)px);
+  height: -webkit-fill-available;
   overflow: auto;
 }
 

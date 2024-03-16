@@ -12,11 +12,6 @@ export default function Page() {
                 <LoginForm />
             </Box>
         </Container>
-        <Container maxWidth="xs" className={s.footer}>
-            <Flex justify={"between"} >
-                <Link href={"https://generational.ac/#terms-and-conditions"}>Terms and conditions</Link>
-                <Link href={"https://generational.ac/#privacy"}>Privacy policy</Link>
-            </Flex>
-        </Container>
+        
     </>
 }
