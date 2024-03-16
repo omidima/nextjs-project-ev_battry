@@ -37,7 +37,7 @@ export default function DashboardStatusCard() {
                         <h3>Nominal battery capacity</h3>
                         <p>The total energy storage capacity of the battery pack when it's brand new and in optimal conditions.</p>
                         <Flex align={"end"} gap={"2"}>
-                            <div><h1 className="text-start">{vehicle.active?.battery_capacity_nominal_kwh}</h1></div>
+                            <div><h1 className="text-start">{vehicle.active?.battery_capacity_nominal_kwh ?? "Unknown"}</h1></div>
                             <div><p>kWh</p></div>
                         </Flex>
                     </div>
@@ -47,7 +47,7 @@ export default function DashboardStatusCard() {
                         <h3>Usable battery capacity</h3>
                         <p>The portion of the nominal capacity that is actually available for use.</p>
                         <Flex align={"end"} gap={"2"}>
-                            <div><h1 className="text-start">{vehicle.active?.battery_capacity_usable_kwh}</h1></div>
+                            <div><h1 className="text-start">{vehicle.active?.battery_capacity_usable_kwh ?? "Unknown"}</h1></div>
                             <div><p>kWh</p></div>
                         </Flex>
 
@@ -57,8 +57,8 @@ export default function DashboardStatusCard() {
                     <div className={`${s.card} ${s.dark}`} style={{ background: "#1940CB" }}>
                         <h3>Remaining battery warranty (months)</h3>
                         <Flex align={"end"} gap={"4"}>
-                            <div><h1 className="text-start">{vehicle.active?.battery_remaining_warranty_months} months </h1> </div>
-                            <div><p>/ {vehicle.active.battery_warranty_months} months</p></div>
+                            <div><h1 className="text-start">{vehicle.active?.battery_remaining_warranty_months ?? "Unknown"} months </h1> </div>
+                            <div><p>/ {vehicle.active.battery_warranty_months ?? "Unknown"} months</p></div>
                         </Flex>
                         <BorderLinearProgress aria="dark" variant="determinate" value={Number(vehicle.active?.battery_remaining_warranty_months ?? 0) * 100 / Number(vehicle.active.battery_warranty_months ?? 0)} />
                     </div>
@@ -67,8 +67,8 @@ export default function DashboardStatusCard() {
                     <div className={`${s.card} ${s.dark}`} style={{ background: "#1940CB" }}>
                         <h3>Remaining battery warranty (miles)</h3>
                         <Flex align={"end"} gap={"4"}>
-                            <div><h1 className="text-start">{vehicle.active?.battery_remaining_warranty_miles!.toLocaleString()} miles </h1> </div>
-                            <div><p>/ {vehicle.active?.battery_warranty_miles!.toLocaleString()} miles</p></div>
+                            <div><h1 className="text-start">{vehicle.active?.battery_remaining_warranty_miles?.toLocaleString() ?? "Unknown"} miles </h1> </div>
+                            <div><p>/ {vehicle.active?.battery_warranty_miles?.toLocaleString() ?? "Unknown"} miles</p></div>
                         </Flex>
                         <BorderLinearProgress aria="dark" variant="determinate" value={Number(vehicle.active?.battery_remaining_warranty_miles ?? 0) * 100 / Number(vehicle.active?.battery_warranty_miles ?? 0)} />
                     </div>
