@@ -51,10 +51,13 @@ export default function VehicleInfoBox() {
                     <AppModal state={modalIsOpen} setState={setModalState} disableChild={<button className={s.di_button}>Disconnect <AiOutlineDisconnect /></button>} onClose={() => { }} >
                         <div className="mb-4">
                             <h4>Warning</h4>
-                            <p>Are you sure you want to disconnect your vehicle from GENERATIONAL?</p>
+                            <p>Are you sure you want to disconnect your vehicle from Generational?</p>
                         </div>
-                        <Flex justify={"between"}>
+                        <Flex justify={"between"} style={{fontSize: 12}} wrap={"wrap"}>
                             <Button text={"Discard"} type="soft" onClick={() => { history.back() }} />
+                            <div >
+                                <p className="mb-2"></p>
+                            </div>
                             <Button text={"Yes, I want to disconnect my vehicle"} type="primary" onClick={async () => {
                                 const params = { vehiclId: vehicle.active?.id };
                                 await parseSdk.Cloud.run("disconnect_vehicle", params);

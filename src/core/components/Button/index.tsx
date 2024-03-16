@@ -30,7 +30,7 @@ export default function Button(props: Props) {
                 return s.error
         }
     }
-    return <div className={handleType()}
+    return <div className={`${handleType()}`}
         style={{
             width: props.full ? "w-100" : "fit-content"
         }}
