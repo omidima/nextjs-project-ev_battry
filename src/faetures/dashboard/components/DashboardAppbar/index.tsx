@@ -3,12 +3,16 @@ import s from "./index.module.scss"
 import Link from "next/link"
 import { Logout, Person } from "@mui/icons-material"
 import { clearCookies } from "@/utils/cookie_helper"
+import Image from "next/image"
+
+import logo from "../../../../../public/p_logo.svg"
 
 export default function DashboardAppbar() {
     const isDesktop = window.innerWidth > 900
 
-    return <div>
-        <Flex justify={"between"} align={"center"} className={isDesktop ? undefined : s.fixed_top}>
+    return <div className={isDesktop ? undefined : s.fixed_top}> 
+        <Flex justify={"center"}><Image alt="" src={logo} width={200}/></Flex>
+        <Flex justify={"between"} align={"center"} >
             <Link href={"/dashboard/profile"} className={s.button}>
                 <Person /> <span> My Account</span>
             </Link>

@@ -39,24 +39,28 @@ export default function Form(props: { onSubmit: () => void }) {
         return user.length === 0;
     }
 
-    function validateForm(): boolean {
+    function validateForm(setError?: boolean): boolean {
         const email = document.querySelector<HTMLInputElement>("input[name='email']")?.value;
         const first_name = document.querySelector<HTMLInputElement>("input[name='first_name']")?.value;
         const last_name = document.querySelector<HTMLInputElement>("input[name='last_name']")?.value;
 
-        if (!email && email?.search("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")) {
-            validation.email = true
-        }
+        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
-        if (!first_name) {
-            validation.firstname = true
-        }
+        if (setError) {
+            if (!email || email!.search(regex) == -1) {
+                validation.email = true
+            }
 
-        if (!last_name) {
-            validation.lastname = true
-        }
+            if (!first_name) {
+                validation.firstname = true
+            }
 
-        setValidation({ ...validation })
+            if (!last_name) {
+                validation.lastname = true
+            }
+
+            setValidation({ ...validation })
+        }
 
         if (validation.email || validation.firstname || validation.lastname) {
             return false
@@ -76,39 +80,41 @@ export default function Form(props: { onSubmit: () => void }) {
             <h1 className="mb-2">Welcome to Generational</h1>
             <p className="mb-6 text-center">Sign-up your EV to receive free battery health checks.</p>
             <div className="mb-4">
-                <TextFieldInput error={validation.firstname ? "Check this field." : undefined} label="First name" type="text" name="first_name" required onChange={() => setValidation({ ...initValidation })} />
+                <TextFieldInput error={validation.firstname ? "Please enter your first name." : undefined} label="First name" type="text" name="first_name" required onChange={() => setValidation({ ...initValidation })} />
             </div>
             <div className="mb-4">
-                <TextFieldInput error={validation.lastname ? "Check this field." : undefined} label="Last name" type="text" name="last_name" required onChange={() => setValidation({ ...initValidation })} />
+                <TextFieldInput error={validation.lastname ? "Please enter your last name." : undefined} label="Last name" type="text" name="last_name" required onChange={() => setValidation({ ...initValidation })} />
             </div>
             <div className="mb-4">
-                <TextFieldInput error={validation.email ? "email address incorrect or unavailable." : undefined} label="Email" type="email" name="email" required onChange={() => setValidation({ ...initValidation })} />
+                <TextFieldInput error={validation.email ? "Please enter a valid email address." : undefined} label="Email" type="email" name="email" required onChange={() => setValidation({ ...initValidation })} />
             </div>
 
             <div className="mb-4">
                 <Flex align={"center"} gap={"2"}>
                     <input type="checkbox" className={s.checkbox} onChange={(e) => {
                         setActiveCompanyField(!isActiveCompanyField)
-                    }} /> <span>I’m a Fleet manager</span>
+                    }} /> <span>Fleet manager</span>
                 </Flex>
             </div>
 
             {isActiveCompanyField ? <div className="mb-4">
                 <TextFieldInput label="Company name" type="text" name="company" required />
             </div> : null}
-            <Button full text="Continue" type="primary" onClick={async () => {
+            <Button full text="Continue" type={validation.email || validation.firstname || validation.lastname ? "soft" :"primary"} onClick={async () => {
 
-                if (validateForm()) {
+                if (validateForm(true)) {
                     const result = await isAvailable(document.querySelector<HTMLInputElement>("input[name='email']")?.value!)
                     if (result) {
                         const email = document.querySelector<HTMLInputElement>("input[name='email']")?.value;
                         const first_name = document.querySelector<HTMLInputElement>("input[name='first_name']")?.value;
                         const last_name = document.querySelector<HTMLInputElement>("input[name='last_name']")?.value;
+                        const company_name = document.querySelector<HTMLInputElement>("input[name='company']")?.value;
 
                         localStorage.setItem(USER_DATA, JSON.stringify({
                             firstname: first_name,
                             lastname: last_name,
-                            email: email
+                            email: email,
+                            company_name: company_name
                         }))
 
                         props.onSubmit()

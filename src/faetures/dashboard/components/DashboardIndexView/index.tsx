@@ -31,7 +31,7 @@ export default function DashboardStatusCard() {
     return <>
         {isDesktop ? null : <DashboardAppbar />}
         {vehicle.active ? <div className={s.body}>
-            <Grid container spacing={2} rowSpacing={2} padding={2} className={isDesktop ? undefined : "mt-5"}>
+            <Grid container spacing={2} rowSpacing={2} padding={2} className={isDesktop ? undefined : "mt-6"}>
                 <Grid item xl={6} lg={6} md={6} sm={6} xs={12} >
                     <div className={`${s.card} ${s.green}`} style={{ background: "#ACF5B0" }}>
                         <h3>Nominal battery capacity</h3>

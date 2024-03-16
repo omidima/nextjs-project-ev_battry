@@ -29,7 +29,7 @@ export default function Page() {
 
     return <div className={s.container}>
         {isDesktop ? null : <DashboardAppbar />}
-        <Grid container className={isDesktop ? undefined : "mt-5"}>
+        <Grid container className={isDesktop ? undefined : "mt-6"}>
             <Grid item xl={8} lg={8} md={6} sm={12} xs={12} className={s.body}>
                 <form>
                     <div className={`${s.profile_form} m-3`}>
@@ -67,12 +67,12 @@ export default function Page() {
                                     </Grid>
                                 </> : null}
 
-                                <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Receive battery health report emails</Grid>
+                                {/* <Grid item xl={6} lg={6} md={6} sm={12} xs={12} alignItems={"center"} display={"flex"}>Receive battery health report emails</Grid>
                                 <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                                     <Switch size={"3"} checked={receivedBatteryRepoState} onCheckedChange={(e) => {
                                         setReceivedBatteryRepoState(e)
                                     }} />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xl={12} lg={12} md={12} sm={12} xs={12} justifyContent={"end"} display={"flex"}>
                                     <div style={{ width: 136 }}>

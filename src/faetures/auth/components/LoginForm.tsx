@@ -41,16 +41,16 @@ export default function LoginForm() {
             open={open}
             autoHideDuration={6000}
             onClose={handleClose}
-            message="Login in failed! please try again"
+            message="Log in in failed. Please try again"
         />
         <h1 className="mb-6">Sign in to Generational</h1>
         <div className="mb-4">
             <TextFieldInput label="Email" type="email" name="email" required />
         </div>
         <div className="mb-4">
-            <TextFieldInput label="Passsword" type="password" lead={<Link href={"/forget-password"}>Forget password?</Link>} name="password" required />
+            <TextFieldInput label="Password" type="password" lead={<Link href={"/forget-password"}>Forgot password?</Link>} name="password" required />
         </div>
-        <Button full text="Sign In" type="primary" onClick={async () => {
+        <Button full text="Sign in" type="primary" onClick={async () => {
             try {
                 const response = await postLogin(
                     document.querySelector<HTMLInputElement>("input[name='email']")?.value!,
@@ -67,7 +67,7 @@ export default function LoginForm() {
             }
         }} />
         <div className={`login_button text-center mt-6`}>
-            <Link href={"/signup"}><span>Create an Account</span></Link>
+            <Link href={"/signup"}><span>Create an account</span></Link>
         </div>
     </form>
 }

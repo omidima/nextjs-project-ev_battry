@@ -91,7 +91,7 @@ export default function SetPassword(props: { onBack: () => void }) {
                 open={open}
                 autoHideDuration={6000}
                 onClose={handleClose}
-                message="Login in failed! please try again"
+                message="Email already associated with an account. Please sign-in instead."
             />
             <h1 className="mb-2">Welcome to Generational</h1>
             <p className="mb-6 text-center">Sign-up your EV to receive free battery health checks.</p>
@@ -109,7 +109,11 @@ export default function SetPassword(props: { onBack: () => void }) {
                 const password = document.querySelector<HTMLInputElement>("input[name='password']")?.value;
                 const confirm = document.querySelector<HTMLInputElement>("input[name='c_password']")?.value;
 
-                if (password === confirm && Object.entries(score).filter(item => item[1] == true).length >= 3) {
+                if (password !== confirm) {
+                    setError("Please check passwords again.")
+                } else if (Object.entries(score).filter(item => item[1] == true).length < 3) {
+                    setError("Please use a stronger password.")
+                } else if (password === confirm && Object.entries(score).filter(item => item[1] == true).length >= 3) {
                     const email = document.querySelector<HTMLInputElement>("input[name='email']")?.value;
                     const first_name = document.querySelector<HTMLInputElement>("input[name='first_name']")?.value;
                     const last_name = document.querySelector<HTMLInputElement>("input[name='last_name']")?.value;
@@ -136,11 +140,11 @@ export default function SetPassword(props: { onBack: () => void }) {
                     setError(undefined)
 
                 } else {
-                    setError("Please check passwords again")
+                    setError("Email already associated with an account. Please sign-in instead.")
                 }
             }} />
             <div className="mb-4" />
-            <Button text="Back" type="text" onClick={async () => {
+            <Button full text="Back" type="text" onClick={async () => {
                 props.onBack()
             }} />
 
