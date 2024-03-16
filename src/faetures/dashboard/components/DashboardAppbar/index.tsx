@@ -14,7 +14,7 @@ export default function DashboardAppbar() {
         <Flex justify={"center"}><Image alt="" src={logo} width={200}/></Flex>
         <Flex justify={"between"} align={"center"} >
             <Link href={"/dashboard/profile"} className={s.button}>
-                <Person /> <span> My Account</span>
+                <Person /> <span>My account</span>
             </Link>
             <div className={s.h_line} />
             <div onClick={() => {
@@ -22,7 +22,7 @@ export default function DashboardAppbar() {
                 clearCookies()
                 location.replace("/signin")
             }} className={s.button}>
-                <Logout fontSize={"small"} /><span>Log Out</span>
+                <Logout fontSize={"small"} /><span>Log out</span>
             </div>
         </Flex>
         <hr />

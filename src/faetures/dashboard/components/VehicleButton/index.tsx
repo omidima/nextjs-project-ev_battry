@@ -19,7 +19,7 @@ export default function VehicleButton(props: Props) {
                 return <BiPlus />
 
             default:
-                return <Image src={props.item.logo_url!} width={50} height={50} alt={""} />
+                return <Image src={props.item.logo_url!} width={50} height={50} alt={""} layout="responsive"/>
         }
     }
 

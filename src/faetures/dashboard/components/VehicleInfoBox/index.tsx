@@ -10,6 +10,7 @@ import Link from "next/link";
 import AppModal from "@/core/components/Modal";
 import Button from "@/core/components/Button";
 import DashboardAppbar from "../DashboardAppbar";
+import parseSdk from "@/core/network/parse";
 
 export default function VehicleInfoBox() {
     const vehicle = useContext(SidebarContext)
@@ -41,15 +42,24 @@ export default function VehicleInfoBox() {
 
                     </Flex>
                     <Image className={s.car_image} src={vehicle.active?.image_url!} alt="" width={512} height={512} />
-                    <p className="m-3 text-justify">You will receive battery health reports once we have collected enough charging data.</p>
+                    <p className="m-3">
+                        You will receive email confirmation that your vehicle is connected. If you do not receive anything please check your spam folder. Battery health reports are sent by email once we have collected enough charging data.
+                        <br />
+                        <br />
+                        If the correct model/variant is not showing, please email support@generational.ac with the correct vehicle details, or drop us a message in the chat. This will allow us to provide you with a more accurate assessment.
+                    </p>
                     <AppModal state={modalIsOpen} setState={setModalState} disableChild={<button className={s.di_button}>Disconnect <AiOutlineDisconnect /></button>} onClose={() => { }} >
                         <div className="mb-4">
                             <h4>Warning</h4>
                             <p>Are you sure you want to disconnect your vehicle from GENERATIONAL?</p>
                         </div>
                         <Flex justify={"between"}>
-                            <Button text={"Discard"} type="soft" onClick={() => { setModalState(false) }} />
-                            <Button text={"Yes, I want to disconnect my vehicle"} type="primary" />
+                            <Button text={"Discard"} type="soft" onClick={() => { history.back() }} />
+                            <Button text={"Yes, I want to disconnect my vehicle"} type="primary" onClick={async () => {
+                                const params = { vehiclId: vehicle.active?.id };
+                                await parseSdk.Cloud.run("disconnect_vehicle", params);
+                                location.reload()
+                            }} />
                         </Flex>
                     </AppModal>
                 </> : null}

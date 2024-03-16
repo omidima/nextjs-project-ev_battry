@@ -9,6 +9,11 @@
     font-family: Roboto;
     cursor: pointer;
 
+    img {
+        max-width: 50px !important;
+        height: 50px;
+    }
+
     svg {
         font-size: 32px;
         margin-bottom: 10px;
@@ -16,7 +21,7 @@
 
     @media (max-width:580px) {
         & {
-            padding: 8px;
+            padding: 0px;
         }
 
         svg {
@@ -36,7 +41,7 @@
 
 .new {
 
-    
+
 
     svg {
         font-size: 32px;

@@ -117,3 +117,7 @@ div {
 .mt-6 {
   margin-top: 58px !important;
 }
+
+.text-start {
+  text-align: start;
+}

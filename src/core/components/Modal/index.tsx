@@ -2,8 +2,6 @@
 import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
 import s from "./index.module.scss";
 import { useRouter } from "next/navigation";
-import { Flex } from "@radix-ui/themes";
-import { RiCloseLine } from "react-icons/ri";
 
 
 interface Props {
@@ -18,18 +16,22 @@ interface Props {
 
 export default function AppModal(props: Props) {
 
-    const [state, setState] = useState(false)
+    const [state, setState] = useState(props.state ?? false)
     const router = useRouter()
 
 
     useEffect(() => {
+        window.addEventListener('popstate', () => {
+            props.state ? props.setState!(false) : setState(false)
+        });
+
         if (state) {
             document.body.scrollTo({ top: 0 })
             document.body.setAttribute("style", "height:95vh; overflow: hidden;")
         } else {
             document.body.setAttribute("style", "")
         }
-    }, [state])
+    }, [])
 
     if (props.state) {
         return props.state ? <>
@@ -38,7 +40,7 @@ export default function AppModal(props: Props) {
                 {props.children}
             </div></> : <div onClick={() => {
                 props.setState!(true);
-                router.push("?openModal", { scroll: false })
+                router.push("?openModal='deactivate'", { scroll: false, })
             }}>
             {props.disableChild}
         </div>
@@ -49,7 +51,7 @@ export default function AppModal(props: Props) {
                 {props.children}
             </div></> : <div onClick={() => {
                 setState!(true)
-                router.push("?openModal", { scroll: false })
+                router.push("?openModal='deactivate'", { scroll: false })
             }}>
             {props.disableChild}
         </div>

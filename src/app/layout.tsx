@@ -8,11 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Generational",
-  description: "EV Battry Application",
-  viewport: {
-    height: "inner-height",
-    userScalable: false,
-  }
+  description: "EV Battry Application"
 };
 
 export default function RootLayout({

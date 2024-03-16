@@ -4,13 +4,14 @@ import React from "react";
 import ReactEcharts from "echarts-for-react";
 
 export default function Chart(props: { value: number, title: string, max: number }) {
+
     const lineSize = (window.innerWidth / 20) < 25 ? window.innerWidth / 20 : 25
     const option = {
         series: [
             {
                 type: 'gauge',
                 min: 0,
-                max: props.max,
+                max: props.max + (5 - (props.max % 5)),
                 progress: {
                     show: true,
                     overlap: false,

@@ -101,12 +101,11 @@ export default function Page() {
                     </div>
                     <div className={s.content}>
                         <Alert severity="warning">
-                            <strong>You are deactivatiing your account</strong>
                             <p>All vehicles will be disconnected and you will need to set-up a new account to rejoin the service.</p>
                         </Alert>
                         <Grid item xl={12} lg={12} md={12} sm={12} xs={12} gap={"10px"} display={"flex"} paddingTop={"30px"} paddingBottom={"30px"}>
-                            <input type="checkbox" defaultChecked={confirm.current} onChange={(e) => {
-                                confirm.current = e.currentTarget.value == "on"
+                            <input type="checkbox" name="tick" onChange={(e) => {
+                                confirm.current = e.target.checked
                             }} style={{
                                 padding: "10px",
                                 width: "24px",
