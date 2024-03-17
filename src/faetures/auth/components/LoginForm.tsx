@@ -41,7 +41,7 @@ export default function LoginForm() {
             open={open}
             autoHideDuration={6000}
             onClose={handleClose}
-            message="Log in in failed. Please try again"
+            message="Log in failed. Please try again"
         />
         <h1 className="mb-6">Sign in to Generational</h1>
         <div className="mb-4">
