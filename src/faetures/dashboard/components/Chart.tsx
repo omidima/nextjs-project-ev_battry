@@ -87,6 +87,7 @@ export default function Chart(props: { value: number, title: string, max: number
     };
 
     return <ReactEcharts option={option} style={{
-        width: "100%"
+        width: "100%",
+        cursor: "pointer"
     }} />;
 }

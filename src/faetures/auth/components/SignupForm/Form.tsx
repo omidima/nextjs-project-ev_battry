@@ -75,7 +75,7 @@ export default function Form(props: { onSubmit: () => void }) {
                 open={open}
                 autoHideDuration={6000}
                 onClose={handleClose}
-                message="Login in failed! Please try again"
+                message="Log in failed. Please try again."
             />
             <h1 className="mb-2">Welcome to Generational</h1>
             <p className="mb-6 text-center">Sign-up your EV to receive free battery health checks.</p>

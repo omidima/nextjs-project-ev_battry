@@ -34,7 +34,7 @@ export default function ForgetPasswordForm() {
             open={open}
             autoHideDuration={6000}
             onClose={handleClose}
-            message="Login in failed! Please try again"
+            message="Log in failed. Please try again."
         />
         <h1 className="mb-3">Forgot Password</h1>
         <p className="mb-6 text-center">Enter your email to reset your password</p>

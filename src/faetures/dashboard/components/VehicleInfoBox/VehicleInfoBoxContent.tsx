@@ -45,7 +45,7 @@ export default function VehicleInfoBoxContent() {
                     <p>Are you sure you want to disconnect your vehicle from Generational?</p>
                 </div>
                 <Flex justify={"between"} style={{ fontSize: 12 }} wrap={"wrap"}>
-                    <Button text={"Discard"} type="soft" onClick={() => { history.back() }} />
+                    <Button text={"Back"} type="soft" onClick={() => { history.back() }} />
                     <div >
                         <p className="mb-2"></p>
                     </div>

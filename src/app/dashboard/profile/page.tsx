@@ -119,10 +119,15 @@ export default function Page() {
 
                                 <Button text="Deactivate account" type="error" onClick={async () => {
                                     if (confirm.current) {
-                                        await parseSdk.User.current()?.destroy()
+                                        try {
+                                            await parseSdk.User.current()?.destroy()
+                                        } catch {
+                                            console.log("server error in response")
+                                        }
+
                                         localStorage.clear()
-                                        clearCookies()
                                         location.replace("/signup")
+                                        clearCookies()
                                     } else {
                                         alert("To deactivate your account, check the ‘Confirm account deactivation’ box.")
                                     }
