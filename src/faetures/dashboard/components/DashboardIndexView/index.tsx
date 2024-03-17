@@ -8,7 +8,6 @@ import Image from "next/image";
 import emptyLogo from "../../../../../public/not-selected.svg"
 import { Flex } from "@radix-ui/themes";
 import Chart from "../Chart";
-import DashboardAppbar from "../DashboardAppbar";
 
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme, aria }: { theme?: Theme, aria: "green" | "dark" }) => ({
@@ -26,12 +25,10 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme, aria }: { theme?: 
 
 export default function DashboardStatusCard() {
     const vehicle = useContext(SidebarContext)
-    const isDesktop = window.innerWidth > 900
 
     return <>
-        {isDesktop ? null : <DashboardAppbar />}
         {vehicle.active ? <div className={s.body}>
-            <Grid container spacing={2} rowSpacing={2} padding={2} className={isDesktop ? undefined : "mt-6"}>
+            <Grid container spacing={2} rowSpacing={2} padding={2}>
                 <Grid item xl={6} lg={6} md={6} sm={6} xs={12} >
                     <div className={`${s.card} ${s.green}`} style={{ background: "#ACF5B0" }}>
                         <h3>Nominal battery capacity</h3>

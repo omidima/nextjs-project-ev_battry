@@ -44,8 +44,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }, [])
 
     return <>
-        <Box>
-            <Grid container >
+        <Box height={"100%"}>
+            <Grid container height={"100%"}>
                 <DashboardTemplate items={data ?? []}>
                     {loading ? <div style={{
                         position: "absolute",
