@@ -33,6 +33,12 @@ export default function VehicleInfoBoxContent() {
 
             </Flex>
             <Image className={s.car_image} src={vehicle.active?.image_url!} alt="" width={512} height={512} />
+            <Flex className={s.status_box} justify={"between"} wrap={"wrap"}>
+                <span>Status:</span>
+                <div>
+                    <strong style={{ color: "rgba(98, 190, 129, 1)" }}>Connected </strong><span style={{ color: "rgba(156, 156, 156, 1)" }}>({new Date().toDateString()})</span>
+                </div>
+            </Flex>
             <p className="m-3">
                 You will receive email confirmation that your vehicle is connected. If you do not receive anything please check your spam folder. Battery health reports are sent by email once we have collected enough charging data.
                 <br />
