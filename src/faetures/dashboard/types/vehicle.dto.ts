@@ -17,4 +17,5 @@ export interface VehicleDto {
     real_battery_efficiency_mi_per_kwh?: string
     image_url?: string
     logo_url?: string
+    since?: string
 }

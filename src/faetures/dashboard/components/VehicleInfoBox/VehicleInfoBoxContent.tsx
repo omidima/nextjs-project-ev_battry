@@ -36,7 +36,7 @@ export default function VehicleInfoBoxContent() {
             <Flex className={s.status_box} justify={"between"} wrap={"wrap"}>
                 <span>Status:</span>
                 <div>
-                    <strong style={{ color: "rgba(98, 190, 129, 1)" }}>Connected </strong><span style={{ color: "rgba(156, 156, 156, 1)" }}>({new Date().toDateString()})</span>
+                    <strong style={{ color: "rgba(98, 190, 129, 1)" }}>Connected </strong><span style={{ color: "rgba(156, 156, 156, 1)" }}>{`(${vehicle.active.since})`}</span>
                 </div>
             </Flex>
             <p className="m-3">
