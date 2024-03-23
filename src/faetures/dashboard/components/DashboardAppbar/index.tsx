@@ -6,6 +6,7 @@ import { clearCookies } from "@/utils/cookie_helper"
 import Image from "next/image"
 
 import logo from "../../../../../public/p_logo.svg"
+import { logout } from "@/utils/helper/functionality"
 
 export default function DashboardAppbar() {
     const isDesktop = window.innerWidth > 900
@@ -18,9 +19,7 @@ export default function DashboardAppbar() {
             </Link>
             <div className={s.h_line} />
             <div onClick={() => {
-                localStorage.clear()
-                clearCookies()
-                location.replace("/signin")
+                logout()
             }} className={s.button}>
                 <Logout fontSize={"small"} /><span>Log out</span>
             </div>

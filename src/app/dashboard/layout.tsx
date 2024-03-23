@@ -1,12 +1,12 @@
 "use client"
 
-import { Metadata } from "next";
 import { VehicleDto } from "@/faetures/dashboard/types/vehicle.dto";
 import DashboardTemplate from "@/faetures/dashboard/components/DashboardTemplate";
 import { getCurrentUser } from "@/faetures/auth/apis/auth";
 import { Box, CircularProgress, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getGetVehicles } from "@/faetures/dashboard/apis/vehicle";
+import { logout } from "@/utils/helper/functionality";
 
 
 async function getData() {
@@ -26,7 +26,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         setLoading(true)
         getCurrentUser().then((r) => {
             if (r.getUsername()) {
-                getData().then(r => {setData(r); setLoading(false);}).catch((r) => setLoading(false))
+                getData().then(r => { setData(r); setLoading(false); }).catch((r) => setLoading(false))
 
                 document.addEventListener("visibilitychange", function () {
                     if (!document.hidden) {
@@ -34,10 +34,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     }
                 });
             } else {
-                location.replace("/signin")
+
                 setLoading(false)
             }
-        }).catch(e => {
+        }).catch(async (e) => {
+            await logout()
             location.replace("/signin")
         })
 
