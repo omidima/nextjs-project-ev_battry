@@ -4,12 +4,13 @@ import Button from "@/core/components/Button"
 import TextFieldInput from "@/core/components/TextFieldInput"
 import parseSdk from "@/core/network/parse"
 import { Snackbar } from "@mui/material"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 export default function ForgetPasswordForm() {
     const [error, setError] = useState<string | null>(null)
 
     const [open, setOpen] = useState(false);
+    const errorMessage = useRef("Something wrong. Please try again.")
     const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
             return;
@@ -17,6 +18,8 @@ export default function ForgetPasswordForm() {
 
         setOpen(false);
     };
+
+    const [showSuccess, setShowSuccess] = useState(false)
 
     function checkEmail(email: string) {
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -34,28 +37,35 @@ export default function ForgetPasswordForm() {
             open={open}
             autoHideDuration={6000}
             onClose={handleClose}
-            message="Log in failed. Please try again."
+            message={errorMessage.current}
         />
         <h1 className="mb-3">Forgot Password</h1>
         <p className="mb-6 text-center">Enter your email to reset your password</p>
-        <div className="mb-4">
-            <TextFieldInput error={error ?? undefined} label="Email" type="email" name="email" onChange={() => {
-                setError(null)
-            }} />
-        </div>
-        <Button full text="Send email" type="primary" onClick={async () => {
-            const email = document.querySelector<HTMLInputElement>("input[name='email']")!.value
-            if (checkEmail(email)) {
-                try {
-                    await parseSdk.User.requestPasswordReset(document.querySelector<HTMLInputElement>("input[name='email']")!.value)
-                    history.back()
-                } catch {
-                    setOpen(true)
+        {!showSuccess ? <>
+            <div className="mb-4">
+                <TextFieldInput error={error ?? undefined} label="Email" type="email" name="email" onChange={() => {
+                    setError(null)
+                }} />
+            </div>
+            <Button full text="Send email" type="primary" onClick={async () => {
+                const email = document.querySelector<HTMLInputElement>("input[name='email']")!.value
+                if (checkEmail(email)) {
+                    try {
+                        await parseSdk.User.requestPasswordReset(document.querySelector<HTMLInputElement>("input[name='email']")!.value)
+                        setShowSuccess(true)
+                        setTimeout(() => {
+                            history.back()
+                        }, 6000)
+                    } catch {
+                        setOpen(true)
+                    }
+                } else {
+                    setError("Please enter a valid email address.")
                 }
-            } else {
-                setError("Please enter a valid email address.")
-            }
-        }} />
+            }} />
+        </> : <p>
+            Thank you. If your email address is associated with an account in our system, we have sent you instructions on how to reset your password.
+        </p>}
         <Button full text="Back" type="text" onClick={async () => {
             history.back()
         }} />

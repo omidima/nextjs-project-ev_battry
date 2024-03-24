@@ -11,8 +11,8 @@ import { logout } from "@/utils/helper/functionality"
 export default function DashboardAppbar() {
     const isDesktop = window.innerWidth > 900
 
-    return <div className={isDesktop ? undefined : s.fixed_top}> 
-        <Flex justify={"center"}><Image alt="" src={logo} width={200}/></Flex>
+    return <div className={isDesktop ? undefined : s.fixed_top}>
+        <Flex justify={"center"} style={!isDesktop ? { paddingTop: "12px" } : undefined}><Image alt="" src={logo} width={200} /></Flex>
         <Flex justify={"between"} align={"center"} >
             <Link href={"/dashboard/profile"} className={s.button}>
                 <Person /> <span>My account</span>

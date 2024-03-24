@@ -18,10 +18,8 @@ export default function VehicleInfoBoxContent() {
                 <Image src={vehicle.active.logo_url!} width={50} height={50} alt={""} />
                 <div className="">
                     <p>{vehicle.active.make}</p>
-                    <Flex align={"center"}>
+                    <Flex align={"center"} wrap={"wrap"} justify={"start"}>
                         <div>
-                            <span>{vehicle.active?.model}</span>
-                            <br />
                             <span>{vehicle.active?.model_variant}</span>
                         </div>
                         <div className={s.h_line} />

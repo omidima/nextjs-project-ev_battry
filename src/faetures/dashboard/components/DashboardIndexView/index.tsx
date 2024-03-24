@@ -28,11 +28,14 @@ export default function DashboardStatusCard() {
 
     return <>
         {vehicle.active ? <div className={s.body}>
+            
             <Grid container spacing={2} rowSpacing={2} padding={2}>
                 <Grid item xl={6} lg={6} md={6} sm={6} xs={12} >
                     <div className={`${s.card} ${s.green}`} style={{ background: "#ACF5B0" }}>
-                        <h3>Nominal battery capacity</h3>
-                        <p>The total energy storage capacity of the battery pack when it's brand new and in optimal conditions.</p>
+                        <div>
+                            <h3 className="mb-1">Nominal battery capacity</h3>
+                            <p>The total energy storage capacity of the battery pack when it's brand new and in optimal conditions.</p>
+                        </div>
                         <Flex align={"end"} gap={"2"}>
                             <div><h1 className="text-start">{vehicle.active?.battery_capacity_nominal_kwh ?? "Unknown"}</h1></div>
                             <div><p>kWh</p></div>
@@ -41,8 +44,10 @@ export default function DashboardStatusCard() {
                 </Grid>
                 <Grid item xl={6} lg={6} md={6} sm={6} xs={12} >
                     <div className={`${s.card} ${s.green}`} style={{ background: "#ACF5B0" }}>
-                        <h3>Usable battery capacity</h3>
-                        <p>The portion of the nominal capacity that is actually available for use.</p>
+                        <div>
+                            <h3 className="mb-1">Usable battery capacity</h3>
+                            <p>The portion of the nominal capacity that is actually available for use.</p>
+                        </div>
                         <Flex align={"end"} gap={"2"}>
                             <div><h1 className="text-start">{vehicle.active?.battery_capacity_usable_kwh ?? "Unknown"}</h1></div>
                             <div><p>kWh</p></div>

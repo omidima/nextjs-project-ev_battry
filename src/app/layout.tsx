@@ -12,7 +12,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "Generational",
-  description: "EV Battry Application"
+  description: "EV battery health assessment"
 };
 
 export default function RootLayout({

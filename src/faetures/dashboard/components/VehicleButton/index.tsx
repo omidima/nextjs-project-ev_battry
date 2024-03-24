@@ -36,7 +36,7 @@ export default function VehicleButton(props: Props) {
     }
 
     return <div className={`${props.type === "item" ? s.item : s.new} ${props.isActive ? s.active : s.deactive}`} onClick={() => props.onSelect ? props.onSelect(props.item) : null}>
-        <div>
+        <div className={s.logo}>
             {returnLogo()}
         </div>
         <div>

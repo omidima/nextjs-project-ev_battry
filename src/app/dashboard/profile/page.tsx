@@ -1,7 +1,7 @@
 "use client"
 
 import VehicleInfoBox from "@/faetures/dashboard/components/VehicleInfoBox";
-import { Alert, Grid } from "@mui/material";
+import { Alert, Grid, Snackbar } from "@mui/material";
 import s from "./../dashboard.module.scss"
 import { Flex, Switch } from "@radix-ui/themes";
 import Button from "@/core/components/Button";
@@ -19,6 +19,16 @@ export default function Page() {
     const [user, setUser] = useState<null | Parse.User>(null)
     const isDesktop = window.innerWidth > 900
 
+    const [open, setOpen] = useState(false);
+    const errorMessage = useRef("Something wrong. Please try again.")
+    const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
     useEffect(() => {
         getCurrentUser().then((e) => {
             setUser(e)
@@ -29,6 +39,12 @@ export default function Page() {
 
     return <div className={s.container}>
         {isDesktop ? null : <DashboardAppbar />}
+        <Snackbar
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            message={errorMessage.current}
+        />
         <Grid container className={isDesktop ? undefined : "mt-6"}>
             <Grid item xl={8} lg={8} md={6} sm={12} xs={12} className={s.body}>
                 <form>
@@ -81,13 +97,29 @@ export default function Page() {
                                             const last_name = document.querySelector<HTMLInputElement>("input[name='last_name']")?.value
                                             const company_name = document.querySelector<HTMLInputElement>("input[name='company_name']")?.value
 
-                                            await updateProfile({
-                                                firstname: first_name,
-                                                lastname: last_name,
-                                                company_name: company_name,
-                                                isCompany: isCompany,
-                                                received_battery_repo: receivedBatteryRepoState
-                                            })
+                                            if (isCompany) {
+                                                if (company_name?.length ?? 0 > 1) {
+                                                    await updateProfile({
+                                                        firstname: first_name,
+                                                        lastname: last_name,
+                                                        company_name: company_name,
+                                                        isCompany: isCompany,
+                                                        received_battery_repo: receivedBatteryRepoState
+                                                    })
+                                                } else {
+                                                    errorMessage.current = "Company name is required."
+                                                    setOpen(true)
+                                                }
+                                            } else {
+                                                await updateProfile({
+                                                    firstname: first_name,
+                                                    lastname: last_name,
+                                                    company_name: "",
+                                                    isCompany: false,
+                                                    received_battery_repo: receivedBatteryRepoState
+                                                })
+                                            }
+
                                         }} />
                                     </div>
                                 </Grid>
