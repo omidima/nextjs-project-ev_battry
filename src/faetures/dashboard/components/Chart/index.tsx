@@ -2,6 +2,7 @@
 
 import React from "react";
 import ReactEcharts from "echarts-for-react";
+import s from "./index.module.scss"
 
 export default function Chart(props: { value: number, title: string, max: number }) {
 
@@ -86,8 +87,21 @@ export default function Chart(props: { value: number, title: string, max: number
         ]
     };
 
-    return <ReactEcharts option={option} style={{
-        width: "100%",
-        cursor: "pointer"
-    }} />;
+    return <div style={{ position: "relative" }}>
+        <div style={{
+            width: 150,
+            height: 150,
+            borderRadius: "50px",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%,-50%)",
+            background: "transparent",
+            zIndex: 999
+        }} />
+        <ReactEcharts option={option} style={{
+            width: "100%",
+            cursor: "pointer"
+        }} />
+    </ div>;
 }
