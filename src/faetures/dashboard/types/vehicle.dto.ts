@@ -1,5 +1,5 @@
 export interface VehicleDto {
-    id?: number;
+    vehicle_id?: number;
     make?: string
     model?: string
     model_variant?: string

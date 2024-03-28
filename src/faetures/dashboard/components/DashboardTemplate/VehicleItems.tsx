@@ -17,7 +17,7 @@ export default function VehicleItems(props: {
     }, [props.items.length])
 
     return <>
-        {props.items.map((item, index) => <VehicleButton key={index} item={item} type={"item"} onSelect={() => { props.onChange(item) }} isActive={index === vehicle.active?.id} />)}
+        {props.items.map((item, index) => <VehicleButton key={index} item={item} type={"item"} onSelect={() => { props.onChange(item) }} isActive={item.vehicle_id === vehicle.active?.vehicle_id} />)}
 
         {/* Add button */}
         <VehicleButton key={"add"} item={{

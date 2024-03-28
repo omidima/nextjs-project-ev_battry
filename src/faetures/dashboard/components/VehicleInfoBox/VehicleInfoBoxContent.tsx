@@ -20,6 +20,7 @@ export default function VehicleInfoBoxContent() {
                     <p>{vehicle.active.make}</p>
                     <Flex align={"center"} wrap={"wrap"} justify={"start"}>
                         <div>
+                            <span>{vehicle.active?.make} </span>
                             <span>{vehicle.active?.model_variant}</span>
                         </div>
                         <div className={s.h_line} />
@@ -54,8 +55,9 @@ export default function VehicleInfoBoxContent() {
                         <p className="mb-2"></p>
                     </div>
                     <Button text={"Yes, I want to disconnect my vehicle"} type="primary" onClick={async () => {
-                        const params = { vehiclId: vehicle.active?.id };
+                        const params = { vehiclId: vehicle.active!.vehicle_id };
                         await parseSdk.Cloud.run("disconnect_vehicle", params);
+
                         location.reload()
                     }} />
                 </Flex>
