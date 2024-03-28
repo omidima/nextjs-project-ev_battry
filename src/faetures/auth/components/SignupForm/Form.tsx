@@ -12,12 +12,14 @@ interface validation {
     firstname: boolean
     lastname: boolean
     email: boolean
+    company: boolean
 }
 
 const initValidation = {
     email: false,
     firstname: false,
-    lastname: false
+    lastname: false,
+    company: false
 }
 
 
@@ -43,6 +45,7 @@ export default function Form(props: { onSubmit: () => void }) {
         const email = document.querySelector<HTMLInputElement>("input[name='email']")?.value;
         const first_name = document.querySelector<HTMLInputElement>("input[name='first_name']")?.value;
         const last_name = document.querySelector<HTMLInputElement>("input[name='last_name']")?.value;
+        const company_name = document.querySelector<HTMLInputElement>("input[name='company']")?.value;
 
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
@@ -59,10 +62,14 @@ export default function Form(props: { onSubmit: () => void }) {
                 validation.lastname = true
             }
 
+            if (isActiveCompanyField && (!company_name || company_name == "")) {
+                validation.company = true
+            }
+
             setValidation({ ...validation })
         }
 
-        if (validation.email || validation.firstname || validation.lastname) {
+        if (validation.email || validation.firstname || validation.lastname || validation.company) {
             return false
         }
 
@@ -98,9 +105,12 @@ export default function Form(props: { onSubmit: () => void }) {
             </div>
 
             {isActiveCompanyField ? <div className="mb-4">
-                <TextFieldInput label="Company name" type="text" name="company" required />
+                <TextFieldInput
+                    onChange={() => setValidation({ ...initValidation })}
+                    error={validation.company ? "Please enter a company name." : undefined}
+                    label="Company name" type="text" name="company" required />
             </div> : null}
-            <Button full text="Continue" type={validation.email || validation.firstname || validation.lastname ? "soft" :"primary"} onClick={async () => {
+            <Button full text="Continue" type={validation.email || validation.firstname || validation.lastname ? "soft" : "primary"} onClick={async () => {
 
                 if (validateForm(true)) {
                     const result = await isAvailable(document.querySelector<HTMLInputElement>("input[name='email']")?.value!)

@@ -20,7 +20,7 @@ export default function VehicleInfoBoxContent() {
                     <p>{vehicle.active.make}</p>
                     <Flex align={"center"} wrap={"wrap"} justify={"start"}>
                         <div>
-                            <span>{vehicle.active?.make} </span>
+                            <span>{vehicle.active?.model} </span>
                             <span>{vehicle.active?.model_variant}</span>
                         </div>
                         <div className={s.h_line} />
